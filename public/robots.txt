@@ -1,0 +1,15 @@
+# robots.txt pour SubFlow
+User-agent: *
+Allow: /
+
+# Bloquer l'accès aux pages administratives
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /private/
+
+# Permettre à tous les robots d'accéder au contenu des assets
+Allow: /assets/
+
+# Spécifier l'emplacement du sitemap
+Sitemap: https://subflow.app/sitemap.xml 

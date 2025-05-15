@@ -1,0 +1,55 @@
+# robots.txt pour SubFlow
+# https://subflow.vercel.app
+
+# Règles globales pour tous les robots
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /features/
+Allow: /download/
+Allow: /about/
+Allow: /contact/
+Allow: /privacy/
+Allow: /terms/
+
+# Bloquer l'accès aux sections administratives et techniques
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.js$
+Disallow: /*.css$
+
+# Règles spécifiques pour Googlebot
+User-agent: Googlebot
+Allow: /sitemap.xml
+Allow: /manifest.json
+Crawl-delay: 1
+
+# Règles spécifiques pour Googlebot-Image
+User-agent: Googlebot-Image
+Allow: /assets/images/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.svg$
+Allow: /*.webp$
+
+# Règles spécifiques pour Bingbot
+User-agent: Bingbot
+Crawl-delay: 2
+
+# Règles pour les robots sociaux
+User-agent: Twitterbot
+Allow: /assets/images/subflow-twitter-image.png
+
+User-agent: facebookexternalhit
+Allow: /assets/images/subflow-og-image.png
+
+# Emplacement du sitemap
+Sitemap: https://subflow.vercel.app/sitemap.xml
+
+# Host
+Host: subflow.vercel.app 

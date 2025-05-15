@@ -1,0 +1,84 @@
+{
+  "name": "SubFlow - Gestion et Suivi d'Abonnements",
+  "short_name": "SubFlow",
+  "description": "Application complète pour la gestion, le suivi et l'optimisation de vos abonnements et dépenses mensuelles",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1f2937",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Tableau de bord des abonnements",
+      "short_name": "Abonnements",
+      "description": "Voir tous mes abonnements et dépenses mensuelles",
+      "url": "/dashboard",
+      "icons": [{ "src": "/assets/images/chart-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Ajouter un abonnement",
+      "short_name": "Ajouter",
+      "description": "Ajouter un nouvel abonnement à gérer et suivre",
+      "url": "/add-subscription",
+      "icons": [{ "src": "/assets/images/add-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Économies recommandées",
+      "short_name": "Économies",
+      "description": "Voir les suggestions pour économiser sur vos abonnements",
+      "url": "/savings",
+      "icons": [{ "src": "/assets/images/savings-icon.png", "sizes": "96x96" }]
+    }
+  ],
+  "categories": ["finance", "utilities", "productivity", "money", "budgeting"],
+  "screenshots": [
+    {
+      "src": "/assets/images/subflow-start.png",
+      "sizes": "2732x2048",
+      "type": "image/png",
+      "label": "Tableau de bord de gestion des abonnements SubFlow"
+    },
+    {
+      "src": "/assets/images/subflow-mainscreen.png",
+      "sizes": "2732x2048",
+      "type": "image/png",
+      "label": "Analyse et suivi des abonnements avec SubFlow"
+    },
+    {
+      "src": "/assets/images/subflow-stat.png",
+      "sizes": "2732x2048",
+      "type": "image/png", 
+      "label": "Économies et optimisation des abonnements avec SubFlow"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=app.subflow.android",
+      "id": "app.subflow.android"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/fr/app/subflow/id6741497228"
+    }
+  ],
+  "prefer_related_applications": false
+} 

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/assets/images/icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SubFlow - Gestion et Suivi d'Abonnements | Économisez sur vos Dépenses Mensuelles</title>
+    <meta name="description" content="SubFlow est l'application idéale pour le suivi et la gestion de vos abonnements mensuels. Visualisez, analysez et optimisez vos dépenses récurrentes" />
+    <meta name="keywords" content="gestion abonnements, suivi abonnements, contrôle dépenses mensuelles, économies abonnements, tracker abonnements, application abonnements, budget abonnements, optimisation abonnements, application gestion budget, subflow" />
+    
+    <!-- Manifest pour PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    
+    <!-- Liens canonique et alternatifs -->
+    <link rel="canonical" href="https://subflow.vercel.app/" />
+    <link rel="alternate" href="https://subflow.vercel.app/" hreflang="fr-fr" />
+    <link rel="alternate" href="https://subflow.vercel.app/" hreflang="x-default" />
+    
+    <!-- Favicon et icônes -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+    <link rel="mask-icon" href="/assets/images/safari-pinned-tab.svg" color="#3b82f6" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="msapplication-TileColor" content="#3b82f6" />
+    
+    <!-- Préconnexions pour améliorer la performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="/assets/images/icon.png" as="image" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://subflow.vercel.app/" />
+    <meta property="og:title" content="SubFlow - L'application de gestion et suivi d'abonnements" />
+    <meta property="og:description" content="Prenez le contrôle de vos abonnements mensuels. SubFlow vous aide à suivre, analyser et optimiser toutes vos dépenses récurrentes pour économiser chaque mois." />
+    <meta property="og:image" content="https://subflow.vercel.app/assets/images/subflow-og-image.png" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="SubFlow" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://subflow.vercel.app/" />
+    <meta name="twitter:title" content="SubFlow - Gérez et suivez tous vos abonnements en un seul endroit" />
+    <meta name="twitter:description" content="Application de gestion et suivi des abonnements qui vous aide à économiser en visualisant et optimisant toutes vos dépenses mensuelles." />
+    <meta name="twitter:image" content="https://subflow.vercel.app/assets/images/subflow-twitter-image.png" />
+    
+    <!-- Métadonnées supplémentaires -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="SubFlow" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="SubFlow" />
+    <meta name="apple-mobile-web-app-title" content="SubFlow" />
+    <meta name="theme-color" content="#3b82f6" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Balisage Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "SubFlow",
+        "url": "https://subflow.vercel.app",
+        "description": "Application de suivi et de gestion des abonnements et dépenses mensuelles qui vous aide à visualiser, analyser et économiser sur vos dépenses récurrentes",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "iOS, Android",
+        "author": {
+          "@type": "Organization",
+          "name": "SubFlow"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        },
+        "keywords": "gestion abonnements, suivi abonnements, contrôle dépenses mensuelles, économies abonnements, tracker abonnements, application abonnements",
+        "featureList": "Visualisation des dépenses, Analyse des tendances, Rappels d'échéances, Suggestions d'économies, Catégorisation des abonnements"
+      }
+    </script>
+    
+    <!-- Organisation Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "SubFlow",
+        "url": "https://subflow.vercel.app",
+        "logo": "https://subflow.vercel.app/assets/images/logo.png"
+      }
+    </script>
+    
+    <!-- FAQ Schema.org JSON-LD pour améliorer le référencement sur les requêtes liées aux abonnements -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Comment gérer efficacement mes abonnements mensuels ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SubFlow vous permet de centraliser tous vos abonnements en un seul endroit. L'application vous offre une vue d'ensemble claire de toutes vos dépenses mensuelles, vous aide à identifier les doublons et vous alerte avant chaque prélèvement pour éviter les mauvaises surprises."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Comment suivre mes dépenses d'abonnements au fil du temps ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SubFlow offre des graphiques et des analyses détaillées qui vous montrent l'évolution de vos dépenses mois après mois. Vous pouvez visualiser la répartition par catégorie, identifier les tendances et mesurer vos économies réalisées grâce aux recommandations de l'application."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "L'application SubFlow est-elle gratuite ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui, SubFlow propose une version gratuite qui vous permet de gérer des abonnements en illimité. Une version premium est également disponible pour des fonctionnalités avancées d'analyse et d'optimisation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Comment ajouter mes abonnements à SubFlow ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SubFlow vous permet d'ajouter vos abonnements manuellement et de sélectionner parmi notre base de données avec plus de 5000 services."
+            }
+          }
+        ]
+      }
+    </script>
+  </body>
+</html>
