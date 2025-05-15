@@ -1,5 +1,5 @@
 # robots.txt pour SubFlow
-# https://subflow.vercel.app
+# https://subflowsite.vercel.app
 
 # Règles globales pour tous les robots
 User-agent: *
@@ -49,7 +49,7 @@ User-agent: facebookexternalhit
 Allow: /assets/images/subflow-og-image.png
 
 # Emplacement du sitemap
-Sitemap: https://subflow.vercel.app/sitemap.xml
+Sitemap: https://subflowsite.vercel.app/sitemap.xml
 
 # Host
-Host: subflow.vercel.app 
+Host: subflowsite.vercel.app 
