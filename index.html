@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="/assets/images/icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SubFlow - Gestion et Suivi d'Abonnements | Économisez sur vos Dépenses Mensuelles</title>
-    <meta name="description" content="SubFlow est l'application idéale pour le suivi et la gestion de vos abonnements mensuels. Visualisez, analysez et optimisez vos dépenses récurrentes" />
+    <meta name="description" content="SubFlow est l'application idéale pour le suivi et la gestion de vos abonnements mensuels. Visualisez, analysez et optimisez vos dépenses récurrentes pour économiser jusqu'à 30% chaque mois." />
     <meta name="keywords" content="gestion abonnements, suivi abonnements, contrôle dépenses mensuelles, économies abonnements, tracker abonnements, application abonnements, budget abonnements, optimisation abonnements, application gestion budget, subflow" />
     
     <!-- Manifest pour PWA -->
@@ -63,7 +63,7 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
+        "@type": "MobileApplication",
         "name": "SubFlow",
         "url": "https://subflowsite.vercel.app",
         "description": "Application de suivi et de gestion des abonnements et dépenses mensuelles qui vous aide à visualiser, analyser et économiser sur vos dépenses récurrentes",
@@ -71,15 +71,52 @@
         "operatingSystem": "iOS, Android",
         "author": {
           "@type": "Organization",
-          "name": "SubFlow"
+          "name": "SubFlow",
+          "url": "https://subflowsite.vercel.app",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://subflowsite.vercel.app/assets/images/logo.png",
+            "width": "512",
+            "height": "512"
+          }
         },
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "EUR"
         },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "156",
+          "reviewCount": "98",
+          "bestRating": "5"
+        },
+        "screenshot": [
+          {
+            "@type": "ImageObject",
+            "url": "https://subflowsite.vercel.app/assets/images/subflow-start.png",
+            "caption": "Écran d'accueil SubFlow"
+          },
+          {
+            "@type": "ImageObject",
+            "url": "https://subflowsite.vercel.app/assets/images/subflow-mainscreen.png",
+            "caption": "Tableau de bord des abonnements"
+          },
+          {
+            "@type": "ImageObject",
+            "url": "https://subflowsite.vercel.app/assets/images/subflow-stat.png",
+            "caption": "Analyses et statistiques"
+          }
+        ],
         "keywords": "gestion abonnements, suivi abonnements, contrôle dépenses mensuelles, économies abonnements, tracker abonnements, application abonnements",
-        "featureList": "Visualisation des dépenses, Analyse des tendances, Rappels d'échéances, Suggestions d'économies, Catégorisation des abonnements"
+        "featureList": "Visualisation des dépenses, Analyse des tendances, Rappels d'échéances, Suggestions d'économies, Catégorisation des abonnements",
+        "downloadUrl": [
+          "https://apps.apple.com/fr/app/subflow/id6741497228",
+          "https://play.google.com/store/apps/details?id=com.jessal.subflow"
+        ],
+        "datePublished": "2025-02-19",
+        "contentRating": "Everyone"
       }
     </script>
     
@@ -90,7 +127,19 @@
         "@type": "Organization",
         "name": "SubFlow",
         "url": "https://subflowsite.vercel.app",
-        "logo": "https://subflowsite.vercel.app/assets/images/logo.png"
+        "logo": "https://subflowsite.vercel.app/assets/images/logo.png",
+        "sameAs": [
+          "https://twitter.com/subflowapp",
+          "https://www.instagram.com/subflowapp/",
+          "https://www.facebook.com/subflowapp"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+33-9-XX-XX-XX-XX",
+          "contactType": "customer service",
+          "availableLanguage": ["French", "English"],
+          "email": "support@subflow.app"
+        }
       }
     </script>
     
