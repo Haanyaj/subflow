@@ -43,7 +43,7 @@ const BloomLanding = memo(() => {
 
   return (
     <>
-      <div className="min-h-screen w-full bg-transparent flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-auto relative">
+      <div className="min-h-screen w-full bg-transparent flex items-center justify-center py-1 px-1 sm:p-6 lg:p-8 overflow-auto relative">
         {/* Effet d'étoiles avec 3 couches pour la profondeur */}
         <div className="starry-sky" aria-hidden="true">
           <div className="stars-small"></div>
@@ -51,9 +51,9 @@ const BloomLanding = memo(() => {
           <div className="stars-large"></div>
         </div>
         
-        <div className="w-full max-w-xxl min-h-[900px] max-h-[90vh] bg-zinc-900/60 backdrop-blur-[2px] rounded-2xl shadow-2xl relative overflow-hidden border border-zinc-800/80 flex flex-col z-10 transform-gpu">
+        <div className="w-full max-w-xxl min-h-[95vh] sm:min-h-[90vh] max-h-[98vh] sm:max-h-[90vh] bg-zinc-900/60 backdrop-blur-[2px] rounded-xl sm:rounded-2xl shadow-2xl relative overflow-hidden border border-zinc-800/80 flex flex-col z-10 transform-gpu">
           {/* Logo */}
-          <header className="absolute top-4 left-4 sm:top-6 sm:left-6 lg:top-8 lg:left-8 z-10">
+          <header className="absolute top-2 left-2 sm:top-6 sm:left-6 lg:top-8 lg:left-8 z-10">
             <div
               className={`flex items-center transition-all duration-300 transform-gpu ${
                 isVisible
@@ -61,7 +61,7 @@ const BloomLanding = memo(() => {
                   : "-translate-y-8 opacity-0"
               }`}
             >
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter text-white">
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tighter text-white">
                 SubFlow
                 <span className="text-blue-500 ml-0.5">.</span>
               </h1>
@@ -69,13 +69,12 @@ const BloomLanding = memo(() => {
           </header>
 
           {/* Main Content */}
-          <main className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 px-6 sm:px-8 lg:px-16 py-10 sm:py-12 lg:py-14 flex-1 overflow-hidden items-center">
+          <main className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-8 lg:gap-12 px-3 sm:px-8 lg:px-16 pt-12 pb-4 sm:py-12 lg:py-14 flex-1 overflow-hidden items-center">
             {/* Left Column */}
-            <section className="flex flex-col justify-center">
+            <section className="flex flex-col justify-center mt-6 sm:mt-0">
               <h2 className="sr-only">Fonctionnalités de SubFlow</h2>
-              <br></br><br></br>
               <p
-                className={`text-base sm:text-lg lg:text-xl text-zinc-300 mb-6 sm:mb-8 transition-all duration-300 transform-gpu ${
+                className={`text-base sm:text-lg lg:text-xl text-zinc-300 mb-2 sm:mb-8 transition-all duration-300 transform-gpu ${
                   isVisible
                     ? "translate-y-0 opacity-100"
                     : "translate-y-8 opacity-0"
@@ -87,45 +86,46 @@ const BloomLanding = memo(() => {
               </p>
 
               {/* App Store Section */}
-              <div className="w-full flex flex-col sm:flex-row gap-3 pb-5">
+              <div className="w-full flex flex-row justify-center sm:justify-start gap-2 pb-2 sm:pb-3">
                 <a
                   href="https://apps.apple.com/fr/app/subflow/id6741497228"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block border border-zinc-700 rounded-lg p-2 
-        bg-zinc-800/90 
-        flex items-center gap-2
-        transition-transform duration-200 
-        hover:bg-zinc-700 hover:border-zinc-600 
-        hover:shadow-md hover:shadow-blue-900/20
-        hover:scale-[1.01] transform-gpu"
+                  className="block border border-zinc-700 rounded-lg p-1.5 sm:p-2 
+                    bg-zinc-800/90 
+                    flex items-center gap-1 sm:gap-2
+                    transition-transform duration-200 
+                    hover:bg-zinc-700 hover:border-zinc-600 
+                    hover:shadow-md hover:shadow-blue-900/20
+                    hover:scale-[1.01] transform-gpu
+                    w-[48%] sm:w-auto max-w-[180px] sm:max-w-none"
                   aria-label="Télécharger SubFlow sur l'App Store"
                 >
-                  <div className="bg-white rounded-lg p-3">
+                  <div className="bg-white rounded-lg p-1.5 sm:p-3">
                     <img
                       src="/assets/images/Logo_App_Store_d'Apple.png"
                       alt="Logo App Store"
-                      className="w-10 h-10 object-contain"
+                      className="w-6 h-6 sm:w-10 sm:h-10 object-contain"
                       loading="eager"
                       width="40"
                       height="40"
                     />
                   </div>
                   <div className="flex-grow">
-                    <p className="text-zinc-300 text-sm">Disponible sur</p>
-                    <p className="text-white font-semibold">App Store</p>
+                    <p className="text-zinc-300 text-[10px] sm:text-sm">Disponible sur</p>
+                    <p className="text-white font-semibold text-xs sm:text-base">App Store</p>
                   </div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
+                    width="16"
+                    height="16"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-zinc-400 hover:text-white transition-colors"
+                    className="text-zinc-400 hover:text-white transition-colors hidden sm:block"
                     aria-hidden="true"
                   >
                     <path d="M5 18l6-6-6-6" />
@@ -136,40 +136,41 @@ const BloomLanding = memo(() => {
                   href="https://play.google.com/store/apps/details?id=com.jessal.subflow"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block border border-zinc-700 rounded-lg p-2 
-        bg-zinc-800/90 
-        flex items-center gap-2
-        transition-transform duration-200 
-        hover:bg-zinc-700 hover:border-zinc-600 
-        hover:shadow-md hover:shadow-blue-900/20
-        hover:scale-[1.01] transform-gpu"
+                  className="block border border-zinc-700 rounded-lg p-1.5 sm:p-2 
+                    bg-zinc-800/90 
+                    flex items-center gap-1 sm:gap-2
+                    transition-transform duration-200 
+                    hover:bg-zinc-700 hover:border-zinc-600 
+                    hover:shadow-md hover:shadow-blue-900/20
+                    hover:scale-[1.01] transform-gpu
+                    w-[48%] sm:w-auto max-w-[180px] sm:max-w-none"
                   aria-label="Télécharger SubFlow sur Google Play"
                 >
-                  <div className="bg-white rounded-lg p-3">
+                  <div className="bg-white rounded-lg p-1.5 sm:p-3">
                     <img
                       src="/assets/images/playstore.svg"
                       alt="Logo Google Play Store"
-                      className="w-10 h-10 object-contain"
+                      className="w-6 h-6 sm:w-10 sm:h-10 object-contain"
                       loading="eager"
                       width="40"
                       height="40"
                     />
                   </div>
                   <div className="flex-grow">
-                    <p className="text-zinc-300 text-sm">Disponible sur</p>
-                    <p className="text-white font-semibold">Android</p>
+                    <p className="text-zinc-300 text-[10px] sm:text-sm">Disponible sur</p>
+                    <p className="text-white font-semibold text-xs sm:text-base">Android</p>
                   </div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
+                    width="16"
+                    height="16"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-zinc-400 hover:text-white transition-colors"
+                    className="text-zinc-400 hover:text-white transition-colors hidden sm:block"
                     aria-hidden="true"
                   >
                     <path d="M5 18l6-6-6-6" />
@@ -178,24 +179,25 @@ const BloomLanding = memo(() => {
               </div>
 
               {/* Sections List */}
-              <div className="space-y-3 sm:space-y-4 flex-1 lg:max-h-[55vh]">
+              <div className="space-y-1 sm:space-y-4 flex-1 max-h-[22vh] sm:max-h-[55vh] overflow-y-auto pr-1 mb-2 sm:mb-0">
                 {sections.map((section, index) => (
                   <article
                     key={section.id}
                     id={section.id}
-                    className={`bg-zinc-900/80 p-4 sm:p-5 rounded-xl cursor-pointer transition-transform duration-200 border border-zinc-800/80 hover:bg-zinc-800/90 hover:border-zinc-700/90 hover:shadow-lg hover:shadow-blue-900/10 transform-gpu ${
+                    className={`bg-zinc-900/80 p-2 sm:p-5 rounded-lg sm:rounded-xl cursor-pointer transition-transform duration-200 border border-zinc-800/80 hover:bg-zinc-800/90 hover:border-zinc-700/90 hover:shadow-lg hover:shadow-blue-900/10 transform-gpu ${
                       hoveredSection === index ? "translate-x-2" : ""
                     }`}
                     onMouseEnter={() => handleSectionHover(index)}
                     onMouseLeave={() => handleSectionHover(null)}
+                    onTouchStart={() => handleSectionHover(index === hoveredSection ? null : index)}
                     role="button"
                     tabIndex={0}
                     aria-label={section.title}
                   >
-                    <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 text-white">
+                    <h3 className="text-xs sm:text-base lg:text-lg font-semibold mb-0.5 sm:mb-2 text-white">
                       {section.title}
                     </h3>
-                    <p className="text-zinc-300 text-xs sm:text-sm lg:text-base leading-relaxed">
+                    <p className="text-zinc-300 text-[10px] sm:text-sm lg:text-base leading-tight sm:leading-relaxed line-clamp-2 sm:line-clamp-none">
                       {section.description}
                     </p>
                   </article>
@@ -204,9 +206,9 @@ const BloomLanding = memo(() => {
             </section>
 
             {/* Right Column - Phone Mockups */}
-            <section className="relative flex items-center justify-center h-[45vh] sm:h-[55vh] lg:h-full">
+            <section className="flex items-center justify-center h-[45vh] sm:h-[45vh] lg:h-full mt-0 sm:mt-0">
               <h2 className="sr-only">Aperçu de l'application SubFlow</h2>
-              <div className="relative w-full max-w-[300px] sm:max-w-[350px] lg:max-w-[400px] h-full flex items-center justify-center overflow-visible">
+              <div className="relative w-full max-w-[280px] sm:max-w-[350px] lg:max-w-[400px] h-full flex items-center justify-center">
                 {sections.map((section, index) => {
                   const isHovered = hoveredSection === index;
                   const baseZIndex = hasHoveredSection
@@ -215,11 +217,12 @@ const BloomLanding = memo(() => {
                   
                   let transform = "";
                   if (!hasHoveredSection) {
-                    transform = `translate3d(${index * 25}px, ${15}px, 0) rotate(${index * 15}deg)`;
+                    // Position par défaut - écarts légèrement réduits pour mobile
+                    transform = `translate3d(${index * 10}px, ${5}px, 0) rotate(${index * 8}deg)`;
                   } else if (hoveredSection <= index) {
-                    transform = `translate3d(${(index - hoveredSection) * 10}px, ${(index - hoveredSection) * 15}px, 0) rotate(${(index - hoveredSection) * 5}deg)`;
+                    transform = `translate3d(${(index - hoveredSection) * 8}px, ${(index - hoveredSection) * 8}px, 0) rotate(${(index - hoveredSection) * 4}deg)`;
                   } else {
-                    transform = "translate3d(-200px, 0, 0)";
+                    transform = "translate3d(-100px, 0, 0)";
                   }
                   
                   transform += isHovered ? " scale(1.05)" : " scale(1)";
@@ -233,16 +236,18 @@ const BloomLanding = memo(() => {
                   return (
                     <div
                       key={index}
-                      className="absolute rounded-2xl w-[200px] sm:w-[240px] lg:w-[280px] h-[400px] sm:h-[480px] lg:h-[560px] overflow-hidden shadow-lg will-change-transform"
+                      className="absolute rounded-2xl w-[160px] sm:w-[220px] lg:w-[280px] h-[320px] sm:h-[440px] lg:h-[560px] overflow-hidden shadow-lg will-change-transform border-0 sm:border sm:border-zinc-800/80"
                       style={{
-                        left: `${index * 50}px`,
-                        top: 0,
+                        left: "50%", 
+                        marginLeft: `-${80}px`, // Centrage horizontal
+                        top: "50%",
+                        marginTop: `-${160}px`, // Centrage vertical
                         zIndex: baseZIndex,
                         transform,
                         opacity,
                         transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                        boxShadow: 'none',
-                        borderRadius: '2rem',
+                        boxShadow: isHovered ? '0 4px 12px rgba(0, 0, 0, 0.3)' : 'none',
+                        borderRadius: '1.5rem',
                       }}
                       aria-label={`Écran de la fonctionnalité: ${section.title}`}
                     >
@@ -261,7 +266,7 @@ const BloomLanding = memo(() => {
             </section>
           </main>
 
-          <footer className="p-4 text-center text-zinc-500 text-xs">
+          <footer className="p-2 sm:p-4 text-center text-zinc-500 text-xs">
             <p>© {new Date().getFullYear()} SubFlow - Application de suivi des abonnements et dépenses</p>
           </footer>
 
