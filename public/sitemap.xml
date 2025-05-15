@@ -7,19 +7,19 @@
 
   <!-- Page d'accueil -->
   <url>
-    <loc>https://subflow.app/</loc>
+    <loc>https://subflowsite.vercel.app/</loc>
     <lastmod>2023-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://subflow.app/assets/images/subflow-og-image.png</image:loc>
+      <image:loc>https://subflowsite.vercel.app/assets/images/subflow-og-image.png</image:loc>
       <image:title>SubFlow - Application de suivi des abonnements</image:title>
     </image:image>
   </url>
 
   <!-- Page de téléchargement -->
   <url>
-    <loc>https://subflow.app/download</loc>
+    <loc>https://subflowsite.vercel.app/download</loc>
     <lastmod>2023-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -27,27 +27,27 @@
 
   <!-- Page de fonctionnalités -->
   <url>
-    <loc>https://subflow.app/features</loc>
+    <loc>https://subflowsite.vercel.app/features</loc>
     <lastmod>2023-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
-      <image:loc>https://subflow.app/assets/images/subflow-start.png</image:loc>
+      <image:loc>https://subflowsite.vercel.app/assets/images/subflow-start.png</image:loc>
       <image:title>Visualisez vos dépenses avec SubFlow</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://subflow.app/assets/images/subflow-mainscreen.png</image:loc>
+      <image:loc>https://subflowsite.vercel.app/assets/images/subflow-mainscreen.png</image:loc>
       <image:title>Analysez vos habitudes avec SubFlow</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://subflow.app/assets/images/subflow-stat.png</image:loc>
+      <image:loc>https://subflowsite.vercel.app/assets/images/subflow-stat.png</image:loc>
       <image:title>Suivez votre budget avec SubFlow</image:title>
     </image:image>
   </url>
 
   <!-- Page à propos -->
   <url>
-    <loc>https://subflow.app/about</loc>
+    <loc>https://subflowsite.vercel.app/about</loc>
     <lastmod>2023-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -55,7 +55,7 @@
 
   <!-- Page de contact -->
   <url>
-    <loc>https://subflow.app/contact</loc>
+    <loc>https://subflowsite.vercel.app/contact</loc>
     <lastmod>2023-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -63,7 +63,7 @@
 
   <!-- Page de politique de confidentialité -->
   <url>
-    <loc>https://subflow.app/privacy</loc>
+    <loc>https://subflowsite.vercel.app/privacy</loc>
     <lastmod>2023-11-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
@@ -71,7 +71,7 @@
 
   <!-- Page de conditions d'utilisation -->
   <url>
-    <loc>https://subflow.app/terms</loc>
+    <loc>https://subflowsite.vercel.app/terms</loc>
     <lastmod>2023-11-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
