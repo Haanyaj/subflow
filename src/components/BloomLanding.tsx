@@ -259,7 +259,7 @@ const BloomLanding = memo(() => {
                   };
                   
                   const desktopStyle = {
-                    '@media (min-width: 640px)': {
+                    '@media (minWidth: 640px)': {
                       left: `${index * 50}px`,
                       top: 0,
                       marginLeft: 0,
