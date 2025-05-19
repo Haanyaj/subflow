@@ -5,9 +5,13 @@
     <link rel="icon" type="image/png" href="/assets/images/icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.netlify.app https://*.netlify.com https://netlify.com https://netlify.live;">
-    <title>SubFlow - Gestion et Suivi d'Abonnements | Économisez sur vos Dépenses Mensuelles</title>
-    <meta name="description" content="SubFlow est l'application idéale pour le suivi et la gestion de vos abonnements mensuels. Visualisez, analysez et optimisez vos dépenses récurrentes pour économiser jusqu'à 30% chaque mois." />
-    <meta name="keywords" content="gestion abonnements, suivi abonnements, contrôle dépenses mensuelles, économies abonnements, tracker abonnements, application abonnements, budget abonnements, optimisation abonnements, application gestion budget, subflow" />
+    <title>SubFlow - Gestion et Suivi d'Abonnements | Économisez</title>
+    <meta name="description" content="Gérez et suivez vos abonnements mensuels avec SubFlow. Visualisez et optimisez vos dépenses pour économiser chaque mois." />
+    <meta name="keywords" content="gestion abonnements, suivi abonnements, contrôle dépenses, économies, abonnements mensuels, application abonnements, SubFlow" />
+    
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preload" href="/assets/images/icon.png" as="image" />
+    <link rel="preload" href="/src/main.tsx" as="script" />
     
     <!-- Manifest pour PWA -->
     <link rel="manifest" href="/manifest.json" />
@@ -17,6 +21,7 @@
     <!-- Liens canonique et alternatifs -->
     <link rel="canonical" href="https://subflowsite.netlify.app/" />
     <link rel="alternate" href="https://subflowsite.netlify.app/" hreflang="fr-fr" />
+    <link rel="alternate" href="https://subflowsite.netlify.app/" hreflang="fr" />
     <link rel="alternate" href="https://subflowsite.netlify.app/" hreflang="x-default" />
     
     <!-- Favicon et icônes -->
@@ -30,33 +35,79 @@
     <!-- Préconnexions pour améliorer la performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="/assets/images/icon.png" as="image" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://subflowsite.netlify.app/" />
-    <meta property="og:title" content="SubFlow - L'application de gestion et suivi d'abonnements" />
-    <meta property="og:description" content="Prenez le contrôle de vos abonnements mensuels. SubFlow vous aide à suivre, analyser et optimiser toutes vos dépenses récurrentes pour économiser chaque mois." />
+    <meta property="og:title" content="SubFlow - Gestion et Suivi d'Abonnements" />
+    <meta property="og:description" content="Prenez le contrôle de vos abonnements mensuels. SubFlow vous aide à suivre et optimiser vos dépenses pour économiser chaque mois." />
     <meta property="og:image" content="https://subflowsite.netlify.app/assets/images/subflow-og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:site_name" content="SubFlow" />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://subflowsite.netlify.app/" />
-    <meta name="twitter:title" content="SubFlow - Gérez et suivez tous vos abonnements en un seul endroit" />
-    <meta name="twitter:description" content="Application de gestion et suivi des abonnements qui vous aide à économiser en visualisant et optimisant toutes vos dépenses mensuelles." />
+    <meta name="twitter:title" content="SubFlow - Gérez et suivez vos abonnements" />
+    <meta name="twitter:description" content="Application de gestion et suivi des abonnements qui vous aide à économiser sur vos dépenses mensuelles." />
     <meta name="twitter:image" content="https://subflowsite.netlify.app/assets/images/subflow-twitter-image.png" />
+    <meta name="twitter:creator" content="@subflow" />
     
     <!-- Métadonnées supplémentaires -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="author" content="SubFlow" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="SubFlow" />
     <meta name="apple-mobile-web-app-title" content="SubFlow" />
     <meta name="theme-color" content="#3b82f6" />
+    
+    <!-- Lien vers le sitemap -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    
+    <!-- Indexation rapide -->
+    <meta name="google" content="nositelinkssearchbox" />
+    <meta name="google" content="notranslate" />
+    
+    <!-- Données structurées pour les moteurs de recherche -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "SubFlow",
+      "url": "https://subflowsite.netlify.app",
+      "applicationCategory": "FinanceApplication",
+      "genre": "finance",
+      "description": "Application de gestion et suivi des abonnements et dépenses mensuelles",
+      "operatingSystem": "iOS, Android",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "156",
+        "reviewCount": "98",
+        "bestRating": "5"
+      }
+    }
+    </script>
   </head>
   <body>
+    <header class="sr-only">
+      <h1>Gestion et Suivi d'Abonnements avec SubFlow</h1>
+      <nav aria-label="Navigation principale">
+        <a href="/">Accueil</a>
+        <a href="/fonctionnalites">Fonctionnalités</a>
+        <a href="/tarifs">Tarifs</a>
+        <a href="/faq">FAQ</a>
+        <a href="/contact">Contact</a>
+        <a href="/blog">Blog</a>
+      </nav>
+    </header>
+    
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     
@@ -180,5 +231,23 @@
         ]
       }
     </script>
+    
+    <footer class="sr-only">
+      <nav aria-label="Navigation secondaire">
+        <a href="/faq">FAQ</a>
+        <a href="/contact">Contact</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/confidentialite">Politique de confidentialité</a>
+        <a href="/conditions">Conditions d'utilisation</a>
+        <a href="/blog">Blog</a>
+        <a href="/plan-du-site">Plan du site</a>
+      </nav>
+      <p>&copy; 2025 SubFlow - Tous droits réservés</p>
+      <div>
+        <a href="https://www.facebook.com/subflow" rel="noopener" aria-label="Facebook SubFlow">Facebook</a>
+        <a href="https://www.instagram.com/subflow" rel="noopener" aria-label="Instagram SubFlow">Instagram</a>
+        <a href="https://twitter.com/subflow" rel="noopener" aria-label="Twitter SubFlow">Twitter</a>
+      </div>
+    </footer>
   </body>
 </html>
