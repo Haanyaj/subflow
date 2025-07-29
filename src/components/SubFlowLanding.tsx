@@ -5,6 +5,7 @@ import FeatureSection from "./FeatureSection";
 import PhoneMockup from "./PhoneMockup";
 import Footer from "./Footer";
 import StructuredData from "./StructuredData";
+import ParticleNetwork from "./ParticleNetwork";
 
 const SubFlowLanding = memo(() => {
   const [isVisible, setIsVisible] = useState(false);
@@ -50,8 +51,10 @@ const SubFlowLanding = memo(() => {
   return (
     <>
       <div className="h-screen w-full bg-transparent flex items-center justify-center overflow-hidden relative">
+        {/* Animation de particules connectées en arrière-plan */}
+        <ParticleNetwork />
  
-        <div className="w-full h-full bg-black/80 sm:bg-black/90 backdrop-blur-[1px] sm:backdrop-blur-[2px] relative overflow-hidden flex flex-col z-10 transform-gpu">
+        <div className="w-full h-full bg-transparent backdrop-blur-[0.5px] sm:backdrop-blur-[1px] relative overflow-hidden flex flex-col z-10 transform-gpu">
           {/* Logo */}
           <Header isVisible={isVisible} />
 
