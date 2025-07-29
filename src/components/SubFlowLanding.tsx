@@ -67,9 +67,9 @@ const SubFlowLanding = memo(() => {
                     : "translate-y-8 opacity-0"
                 }`}
               >
-                Gardez le contrôle de vos abonnements.
+                Gardez le contrôle de vos <span className="text-blue-400 font-semibold">abonnements</span>.
                 <br />
-                SubFlow vous aide à suivre et optimiser vos dépenses mensuelles.
+                SubFlow vous aide à suivre et optimiser vos <span className="text-blue-400 font-semibold">dépenses mensuelles</span>.
               </p>
 
               {/* App Store Section */}
