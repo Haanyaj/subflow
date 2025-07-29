@@ -1,6 +1,5 @@
 import { useState, useEffect, memo, useCallback } from "react";
 import Header from "./Header";
-import StarryBackground from "./StarryBackground";
 import AppStoreButtons from "./AppStoreButtons";
 import FeatureSection from "./FeatureSection";
 import PhoneMockup from "./PhoneMockup";
@@ -51,20 +50,18 @@ const SubFlowLanding = memo(() => {
   return (
     <>
       <div className="h-screen w-full bg-transparent flex items-center justify-center overflow-hidden relative">
-        {/* Effet d'étoiles avec 3 couches pour la profondeur */}
-        <StarryBackground />
-        
-        <div className="w-full h-full bg-zinc-900/40 sm:bg-zinc-900/60 backdrop-blur-[1px] sm:backdrop-blur-[2px] relative overflow-hidden flex flex-col z-10 transform-gpu">
+ 
+        <div className="w-full h-full bg-black/80 sm:bg-black/90 backdrop-blur-[1px] sm:backdrop-blur-[2px] relative overflow-hidden flex flex-col z-10 transform-gpu">
           {/* Logo */}
           <Header isVisible={isVisible} />
 
           {/* Main Content */}
-          <main className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-6 lg:gap-12 px-6 sm:px-8 lg:px-16 pt-12 pb-4 sm:py-8 lg:py-12 flex-1 overflow-hidden items-center">
+          <main className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-6 lg:gap-12 px-6 sm:px-8 lg:px-16 pb-4 sm:py-4 lg:py-6 flex-1 overflow-hidden -mt-4 sm:-mt-6 lg:-mt-8">
             {/* Left Column */}
-            <section className="flex flex-col justify-center mt-6 sm:mt-0">
+            <section className="flex flex-col justify-center mt-0 h-full">
               <h2 className="sr-only">Fonctionnalités de SubFlow</h2>
               <p
-                className={`text-base sm:text-lg lg:text-xl text-zinc-300 mb-2 sm:mb-6 transition-all duration-300 transform-gpu ${
+                className={`text-base sm:text-lg lg:text-xl text-zinc-300 mb-3 sm:mb-4 transition-all duration-300 transform-gpu ${
                   isVisible
                     ? "translate-y-0 opacity-100"
                     : "translate-y-8 opacity-0"
@@ -79,7 +76,7 @@ const SubFlowLanding = memo(() => {
               <AppStoreButtons />
 
               {/* Sections List */}
-              <div className="space-y-1 sm:space-y-3 flex-1 max-h-[20vh] sm:max-h-[45vh] overflow-y-auto pr-1 mb-2 sm:mb-0">
+              <div className="space-y-2 sm:space-y-3 flex-1 min-h-0 overflow-hidden pr-1">
                 {sections.map((section, index) => (
                   <FeatureSection
                     key={section.id}
@@ -97,7 +94,7 @@ const SubFlowLanding = memo(() => {
             </section>
 
             {/* Right Column - Phone Mockups */}
-            <section className="flex items-center justify-center h-[40vh] sm:h-[40vh] lg:h-full mt-0 sm:mt-0">
+            <section className="flex items-center justify-center h-full mt-0 sm:mt-0">
               <h2 className="sr-only">Aperçu de l'application SubFlow</h2>
               <div className="relative w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[400px] h-full flex items-center justify-center overflow-visible">
                 {sections.map((section, index) => (

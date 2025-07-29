@@ -6,7 +6,7 @@ interface HeaderProps {
 
 const Header = memo(({ isVisible }: HeaderProps) => {
   return (
-    <header className="absolute top-2 left-2 sm:top-6 sm:left-6 lg:top-8 lg:left-8 z-10">
+    <header className="w-full px-6 sm:px-8 lg:px-16 py-4 sm:py-6 lg:py-8">
       <div
         className={`flex items-center transition-all duration-300 transform-gpu ${
           isVisible

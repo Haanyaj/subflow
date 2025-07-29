@@ -55,19 +55,18 @@ const PhoneMockup = memo(({
     left: "50%", 
     marginLeft: `-${80}px`,
     top: "50%",
-    marginTop: `-${160}px`,
+    marginTop: `-${280}px`,
     zIndex: baseZIndex,
     transform,
     opacity,
     transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-    boxShadow: isHovered ? '0 4px 12px rgba(0, 0, 0, 0.3)' : 'none',
     borderRadius: '1.5rem',
   };
   
   const desktopStyle = {
     '@media (minWidth: 640px)': {
       left: `${index * 50}px`,
-      top: 0,
+      top: '-60px',
       marginLeft: 0,
       marginTop: 0,
       transform: desktopTransform
