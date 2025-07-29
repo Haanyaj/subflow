@@ -75,7 +75,8 @@ const PhoneMockup = memo(({
   
   return (
     <div
-      className="absolute rounded-2xl w-[160px] sm:w-[200px] lg:w-[280px] h-[320px] sm:h-[400px] lg:h-[560px] overflow-hidden shadow-lg will-change-transform border-0"
+      className="absolute rounded-2xl w-[160px] sm:w-[200px] lg:w-[280px] h-[320px] sm:h-[400px] lg:h-[560px] overflow-hidden shadow-lg will-change-transform border-0 phone-mockup"
+      data-index={index}
       style={{
         ...mobileStyle,
         ...desktopStyle

@@ -51,3 +51,46 @@
   transform: translateZ(0);
   will-change: transform;
 }
+
+/* Styles mobiles pour éviter les chevauchements - AJOUT SEULEMENT */
+@media (max-width: 639px) {
+  /* Ajustements pour les mockups de téléphone sur mobile */
+  .phone-mockup {
+    width: 140px !important;
+    height: 280px !important;
+    left: 50% !important;
+    margin-left: -70px !important;
+    top: 50% !important;
+    margin-top: -200px !important;
+  }
+  
+  /* Réduire les déplacements sur mobile */
+  .phone-mockup[data-index="0"] {
+    transform: translate3d(0px, 0px, 0) rotate(0deg) scale(1) !important;
+  }
+  
+  .phone-mockup[data-index="1"] {
+    transform: translate3d(5px, 10px, 0) rotate(3deg) scale(1) !important;
+  }
+  
+  .phone-mockup[data-index="2"] {
+    transform: translate3d(10px, 20px, 0) rotate(6deg) scale(1) !important;
+  }
+  
+  /* Ajustements pour les sections de fonctionnalités */
+  .feature-section {
+    padding: 1rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .feature-section h3 {
+    font-size: 0.875rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .feature-section p {
+    font-size: 0.75rem !important;
+    line-height: 1.4 !important;
+  }
+}
