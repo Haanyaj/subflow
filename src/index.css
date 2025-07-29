@@ -2,21 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-
-/* Animation de clignotement pour le point de SubFlow */
+/* Animation de clignotement smooth pour le point de SubFlow - 2 étapes */
 @keyframes blink {
-  0%, 50% {
+  0%, 45% {
     opacity: 1;
+    transform: scale(1);
+    color: #3b82f6; /* blue-500 */
   }
-  51%, 100% {
+  55%, 100% {
     opacity: 0.3;
+    transform: scale(0.9);
+    color: #1d4ed8; /* blue-700 */
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 45% {
+    text-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+  }
+  55%, 100% {
+    text-shadow: 0 0 3px rgba(59, 130, 246, 0.2);
   }
 }
 
 .animate-blink {
-  animation: blink 1.5s ease-in-out infinite;
+  animation: blink 2s cubic-bezier(0.4, 0, 0.2, 1) infinite, 
+             pulse-glow 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  display: inline-block;
 }
-s
+
 /* Améliorations de performance pour les animations */
 .transform-gpu {
   transform: translateZ(0);
