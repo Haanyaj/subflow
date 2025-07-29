@@ -61,7 +61,8 @@
     left: 50% !important;
     margin-left: -70px !important;
     top: 50% !important;
-    margin-top: -200px !important;
+    margin-top: -140px !important;
+    position: absolute !important;
   }
   
   /* Réduire les déplacements sur mobile */
@@ -92,5 +93,14 @@
   .feature-section p {
     font-size: 0.75rem !important;
     line-height: 1.4 !important;
+  }
+  
+  /* Conteneur des mockups sur mobile */
+  .phone-mockup-container {
+    height: 320px !important;
+    min-height: 320px !important;
+    max-height: 320px !important;
+    overflow: hidden !important;
+    position: relative !important;
   }
 }

@@ -101,7 +101,7 @@ const SubFlowLanding = memo(() => {
             {/* Right Column - Phone Mockups - En second sur mobile */}
             <section className="flex items-center justify-center h-full mt-0 sm:mt-0 order-2 lg:order-2">
               <h2 className="sr-only">Aperçu de l'application SubFlow</h2>
-              <div className="relative w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[400px] h-full flex items-center justify-center overflow-visible">
+              <div className="relative w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[400px] h-full flex items-center justify-center overflow-visible phone-mockup-container">
                 {sections.map((section, index) => (
                   <PhoneMockup
                     key={index}
