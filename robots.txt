@@ -1,31 +1,48 @@
-# robots.txt pour SubFlow
+# robots.txt pour SubFlow - Optimisé pour le SEO
 # https://subflowsite.netlify.app
 
 # Règles globales pour tous les robots
 User-agent: *
 Allow: /
 Allow: /assets/
-Allow: /features/
-Allow: /download/
-Allow: /about/
+Allow: /fonctionnalites/
+Allow: /telecharger/
+Allow: /a-propos/
 Allow: /contact/
-Allow: /privacy/
-Allow: /terms/
+Allow: /faq/
+Allow: /blog/
+Allow: /conseils-economies/
+Allow: /comparaison-abonnements/
+Allow: /confidentialite/
+Allow: /conditions/
+Allow: /mentions-legales/
+Allow: /plan-du-site/
 
 # Bloquer l'accès aux sections administratives et techniques
 Disallow: /admin/
 Disallow: /cgi-bin/
 Disallow: /tmp/
 Disallow: /private/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/
 Disallow: /*.json$
 Disallow: /*.xml$
 Disallow: /*.js$
 Disallow: /*.css$
+Disallow: /*.map$
+
+# Autoriser les fichiers importants pour le SEO
+Allow: /sitemap.xml
+Allow: /manifest.json
+Allow: /robots.txt
+Allow: /browserconfig.xml
 
 # Règles spécifiques pour Googlebot
 User-agent: Googlebot
 Allow: /sitemap.xml
 Allow: /manifest.json
+Allow: /assets/images/
 Crawl-delay: 1
 
 # Règles spécifiques pour Googlebot-Image
@@ -36,20 +53,34 @@ Allow: /*.jpeg$
 Allow: /*.png$
 Allow: /*.svg$
 Allow: /*.webp$
+Allow: /*.gif$
+Crawl-delay: 1
 
 # Règles spécifiques pour Bingbot
 User-agent: Bingbot
+Allow: /sitemap.xml
+Allow: /assets/images/
 Crawl-delay: 2
 
-# Règles pour les robots sociaux
-User-agent: Twitterbot
-Allow: /assets/images/subflow-twitter-image.png
+# Règles pour les robots de recherche chinois
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 3
 
-User-agent: facebookexternalhit
-Allow: /assets/images/subflow-og-image.png
+User-agent: Sogou
+Allow: /
+Crawl-delay: 3
+
+# Règles pour les robots de recherche russes
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
 
 # Emplacement du sitemap
 Sitemap: https://subflowsite.netlify.app/sitemap.xml
 
-# Host
-Host: subflowsite.netlify.app 
+# Host principal
+Host: subflowsite.netlify.app
+
+# Temps d'attente recommandé entre les requêtes
+Crawl-delay: 1 

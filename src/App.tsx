@@ -1,7 +1,13 @@
 import SubFlowLanding from './components/SubFlowLanding'
+import AccessibilityEnhancer from './components/AccessibilityEnhancer'
 
 function App() {
-  return <SubFlowLanding />;
+  return (
+    <>
+      <AccessibilityEnhancer />
+      <SubFlowLanding />
+    </>
+  );
 }
 
 export default App;
