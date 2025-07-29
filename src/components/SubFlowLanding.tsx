@@ -58,10 +58,10 @@ const SubFlowLanding = memo(() => {
           {/* Logo */}
           <Header isVisible={isVisible} />
 
-          {/* Main Content */}
-          <main className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-6 lg:gap-12 px-6 sm:px-8 lg:px-16 pb-4 sm:py-4 lg:py-6 flex-1 overflow-hidden -mt-4 sm:-mt-6 lg:-mt-8">
-            {/* Left Column */}
-            <section className="flex flex-col justify-center mt-0 h-full">
+          {/* Main Content - Layout vertical sur mobile, grille sur desktop */}
+          <main className="flex flex-col lg:grid lg:grid-cols-2 gap-3 sm:gap-6 lg:gap-12 px-6 sm:px-8 lg:px-16 pb-4 sm:py-4 lg:py-6 flex-1 overflow-hidden -mt-4 sm:-mt-6 lg:-mt-8">
+            {/* Left Column - Toujours en premier sur mobile */}
+            <section className="flex flex-col justify-center mt-0 h-full order-1 lg:order-1">
               <h2 className="sr-only">Fonctionnalités de SubFlow</h2>
               <p
                 className={`text-base sm:text-lg lg:text-xl text-zinc-300 mb-3 sm:mb-4 transition-all duration-300 transform-gpu ${
@@ -76,7 +76,9 @@ const SubFlowLanding = memo(() => {
               </p>
 
               {/* App Store Section */}
-              <AppStoreButtons />
+              <div className="mb-4 sm:mb-0">
+                <AppStoreButtons />
+              </div>
 
               {/* Sections List */}
               <div className="space-y-2 sm:space-y-3 flex-1 min-h-0 overflow-hidden pr-1">
@@ -96,8 +98,8 @@ const SubFlowLanding = memo(() => {
               </div>
             </section>
 
-            {/* Right Column - Phone Mockups */}
-            <section className="flex items-center justify-center h-full mt-0 sm:mt-0">
+            {/* Right Column - Phone Mockups - En second sur mobile */}
+            <section className="flex items-center justify-center h-full mt-0 sm:mt-0 order-2 lg:order-2">
               <h2 className="sr-only">Aperçu de l'application SubFlow</h2>
               <div className="relative w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[400px] h-full flex items-center justify-center overflow-visible">
                 {sections.map((section, index) => (

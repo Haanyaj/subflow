@@ -28,11 +28,12 @@ const ParticleNetwork = memo(() => {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    // Configuration des particules
-    const particleCount = 80;
+    // Configuration des particules - responsive
+    const isMobile = window.innerWidth < 640;
+    const particleCount = isMobile ? 30 : 80; // Réduit sur mobile
     const particles: Particle[] = [];
-    const connectionDistance = 200;
-    const maxConnections = 4;
+    const connectionDistance = isMobile ? 150 : 200; // Distance réduite sur mobile
+    const maxConnections = isMobile ? 2 : 4; // Moins de connexions sur mobile
 
     // Initialiser les particules
     for (let i = 0; i < particleCount; i++) {
