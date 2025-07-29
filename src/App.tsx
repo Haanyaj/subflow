@@ -1,7 +1,7 @@
-import BloomLanding from './components/BloomLanding'
+import SubFlowLanding from './components/SubFlowLanding'
 
 function App() {
-  return <BloomLanding />;
+  return <SubFlowLanding />;
 }
 
 export default App;
