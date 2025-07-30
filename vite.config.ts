@@ -12,19 +12,12 @@ export default defineConfig({
   build: {
     // Optimisations pour la production
     target: 'es2015',
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
+    minify: 'esbuild',
     rollupOptions: {
       output: {
         // Optimisation du chunking
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          utils: ['react', 'react-dom'],
         },
         // Optimisation des noms de fichiers
         chunkFileNames: 'assets/js/[name]-[hash].js',
@@ -44,8 +37,6 @@ export default defineConfig({
     },
     // Optimisation de la taille
     chunkSizeWarningLimit: 1000,
-    // Génération du manifest pour le cache
-    manifest: true,
   },
   // Optimisations pour le développement
   server: {
