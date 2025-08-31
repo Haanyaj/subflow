@@ -1,5 +1,5 @@
 # robots.txt pour SubFlow - Optimisé pour le SEO
-# https://subflowsite.netlify.app
+# https://subflow.site
 
 # Règles globales pour tous les robots
 User-agent: *
@@ -77,10 +77,10 @@ Allow: /
 Crawl-delay: 2
 
 # Emplacement du sitemap
-Sitemap: https://subflowsite.netlify.app/sitemap.xml
+Sitemap: https://subflow.site/sitemap.xml
 
 # Host principal
-Host: subflowsite.netlify.app
+Host: subflow.site
 
 # Temps d'attente recommandé entre les requêtes
 Crawl-delay: 1 

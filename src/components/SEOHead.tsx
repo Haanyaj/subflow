@@ -13,12 +13,12 @@ const SEOHead = memo(({
   title = "SubFlow - Gestion d'Abonnements | Suivi & Économies | Application Gratuite",
   description = "SubFlow : l'application gratuite pour gérer vos abonnements. Suivez vos dépenses mensuelles, visualisez vos économies et optimisez votre budget. Téléchargez maintenant sur iOS et Android.",
   keywords = "gestion abonnements, suivi abonnements, contrôle dépenses, économies mensuelles, application abonnements, SubFlow, tracker abonnements, budget mensuel, dépenses récurrentes, optimisation budget",
-  image = "https://subflowsite.netlify.app/assets/images/subflow-og-image.png",
-  url = "https://subflowsite.netlify.app",
+  image = "https://subflow.site/assets/images/subflow-og-image.png",
+  url = "https://subflow.site",
   type = "website"
 }: SEOHeadProps) => {
-  const fullUrl = url.startsWith('http') ? url : `https://subflowsite.netlify.app${url}`;
-  const fullImageUrl = image.startsWith('http') ? image : `https://subflowsite.netlify.app${image}`;
+  const fullUrl = url.startsWith('http') ? url : `https://subflow.site${url}`;
+  const fullImageUrl = image.startsWith('http') ? image : `https://subflow.site${image}`;
 
   return (
     <>

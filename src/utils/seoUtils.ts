@@ -21,8 +21,8 @@ export const defaultSEO: SEOData = {
   title: "SubFlow - Gestion d'Abonnements | Suivi & Économies | Application Gratuite",
   description: "SubFlow : l'application gratuite pour gérer vos abonnements. Suivez vos dépenses mensuelles, visualisez vos économies et optimisez votre budget. Téléchargez maintenant sur iOS et Android.",
   keywords: "gestion abonnements, suivi abonnements, contrôle dépenses, économies mensuelles, application abonnements, SubFlow, tracker abonnements, budget mensuel, dépenses récurrentes, optimisation budget",
-  image: "https://subflowsite.netlify.app/assets/images/subflow-og-image.png",
-  url: "https://subflowsite.netlify.app",
+  image: "https://subflow.site/assets/images/subflow-og-image.png",
+  url: "https://subflow.site",
   type: "website"
 };
 
@@ -124,7 +124,7 @@ export const trackPerformance = () => {
 
 // Fonction pour optimiser les images
 export const optimizeImage = (src: string, width?: number, height?: number) => {
-  const baseUrl = src.startsWith('http') ? src : `https://subflowsite.netlify.app${src}`;
+  const baseUrl = src.startsWith('http') ? src : `https://subflow.site${src}`;
   
   if (src.endsWith('.svg')) {
     return baseUrl;

@@ -17,17 +17,17 @@ const StructuredData = memo(() => {
     "screenshot": [
       {
         "@type": "ImageObject",
-        "url": "https://subflowsite.netlify.app/assets/images/subflow-start.png",
+        "url": "https://subflow.site/assets/images/subflow-start.png",
         "caption": "Écran d'accueil SubFlow - Vue d'ensemble des abonnements"
       },
       {
         "@type": "ImageObject",
-        "url": "https://subflowsite.netlify.app/assets/images/subflow-mainscreen.png",
+        "url": "https://subflow.site/assets/images/subflow-mainscreen.png",
         "caption": "Tableau de bord des abonnements - Gestion centralisée"
       },
       {
         "@type": "ImageObject",
-        "url": "https://subflowsite.netlify.app/assets/images/subflow-stat.png",
+        "url": "https://subflow.site/assets/images/subflow-stat.png",
         "caption": "Analyses et statistiques - Suivi des dépenses"
       }
     ],
@@ -42,10 +42,10 @@ const StructuredData = memo(() => {
     "author": {
       "@type": "Organization",
       "name": "SubFlow",
-      "url": "https://subflowsite.netlify.app",
+      "url": "https://subflow.site",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://subflowsite.netlify.app/assets/images/icon.png",
+        "url": "https://subflow.site/assets/images/icon.png",
         "width": "512",
         "height": "512"
       }
@@ -67,8 +67,8 @@ const StructuredData = memo(() => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "SubFlow",
-    "url": "https://subflowsite.netlify.app",
-    "logo": "https://subflowsite.netlify.app/assets/images/icon.png",
+    "url": "https://subflow.site",
+    "logo": "https://subflow.site/assets/images/icon.png",
     "description": "Application de gestion d'abonnements pour optimiser votre budget mensuel",
     "contactPoint": {
       "@type": "ContactPoint",
@@ -83,7 +83,7 @@ const StructuredData = memo(() => {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "SubFlow",
-    "url": "https://subflowsite.netlify.app",
+    "url": "https://subflow.site",
     "description": "Site officiel de SubFlow - Application de gestion d'abonnements",
     "publisher": {
       "@type": "Organization",

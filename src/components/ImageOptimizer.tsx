@@ -21,7 +21,7 @@ const ImageOptimizer = memo(({
 }: ImageOptimizerProps) => {
   // Génération des différentes tailles d'images pour le responsive
   const generateSrcSet = (imageSrc: string) => {
-    const baseUrl = imageSrc.startsWith('http') ? imageSrc : `https://subflowsite.netlify.app${imageSrc}`;
+    const baseUrl = imageSrc.startsWith('http') ? imageSrc : `https://subflow.site${imageSrc}`;
     
     // Si c'est une image SVG, pas besoin de srcset
     if (imageSrc.endsWith('.svg')) {
