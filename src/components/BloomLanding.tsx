@@ -159,7 +159,7 @@ const BloomLanding = memo(() => {
             </div>
 
             {/* Boutons stores */}
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 mb-6">
               <a
                 href="https://apps.apple.com/fr/app/subflow/id6741497228"
                 target="_blank"
@@ -191,6 +191,29 @@ const BloomLanding = memo(() => {
                   <div className="text-sm font-semibold">Google Play</div>
                 </div>
               </a>
+            </div>
+
+            {/* Presse - Ils parlent de nous */}
+            <div className="flex items-center gap-4">
+              <span className="text-xs text-zinc-500 uppercase tracking-wider">Vu dans</span>
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://www.numerama.com/tech/1910173-cest-quoi-subflow-cette-appli-pour-suivre-ses-abonnements-qui-est-dans-les-plus-telechargees-de-lapp-store.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 bg-zinc-800/50 hover:bg-zinc-700 rounded-md border border-zinc-700/50 transition-all hover:scale-105 text-xs font-medium text-zinc-300 hover:text-white"
+                >
+                  Numerama
+                </a>
+                <a
+                  href="https://www.justgeek.fr/subflow-application-gestion-abonnements-136534/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 bg-zinc-800/50 hover:bg-zinc-700 rounded-md border border-zinc-700/50 transition-all hover:scale-105 text-xs font-medium text-zinc-300 hover:text-white"
+                >
+                  JustGeek
+                </a>
+              </div>
             </div>
           </div>
 
