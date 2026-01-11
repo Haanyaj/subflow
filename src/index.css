@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Effet de ciel étoilé ultra-optimisé */
-.starry-sky {
+/* Fond sombre avec effet d'étoiles */
+.modern-background {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,165 +11,152 @@
   height: 100%;
   z-index: 0;
   overflow: hidden;
-  background: linear-gradient(125deg, #050814 0%, #0a0f1d 50%, #050814 100%);
+  background: #000000;
   pointer-events: none;
 }
 
-/* Premier masque d'étoiles - pattern plus aléatoire */
-.stars-small {
-  position: absolute;
+/* Effet d'étoiles */
+.starry-sky {
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
   width: 100%;
   height: 100%;
-  background: transparent;
-  z-index: 5;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-.stars-small::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 300%;
-  background-image: 
-    radial-gradient(1px 1px at 5% 9%, rgba(255, 255, 255, 0.4) 1px, transparent 0),
-    radial-gradient(1px 1px at 11% 17%, rgba(255, 255, 255, 0.4) 1px, transparent 0),
-    radial-gradient(1px 1px at 21% 29%, rgba(255, 255, 255, 0.5) 1px, transparent 0),
-    radial-gradient(1px 1px at 32% 45%, rgba(255, 255, 255, 0.5) 1px, transparent 0),
-    radial-gradient(1px 1px at 45% 57%, rgba(255, 255, 255, 0.4) 1px, transparent 0),
-    radial-gradient(1px 1px at 63% 87%, rgba(255, 255, 255, 0.6) 1px, transparent 0),
-    radial-gradient(1px 1px at 74% 32%, rgba(255, 255, 255, 0.5) 1px, transparent 0),
-    radial-gradient(1px 1px at 83% 23%, rgba(255, 255, 255, 0.4) 1px, transparent 0),
-    radial-gradient(1px 1px at 27% 69%, rgba(255, 255, 255, 0.5) 1px, transparent 0),
-    radial-gradient(1px 1px at 92% 81%, rgba(255, 255, 255, 0.4) 1px, transparent 0),
-    radial-gradient(1px 1px at 13% 61%, rgba(255, 255, 255, 0.5) 1px, transparent 0),
-    radial-gradient(1px 1px at 56% 73%, rgba(255, 255, 255, 0.4) 1px, transparent 0),
-    radial-gradient(1px 1px at 38% 93%, rgba(255, 255, 255, 0.5) 1px, transparent 0);
-  background-size: 300px 300px;
-  background-repeat: repeat;
-  transform: translateZ(0);
-  will-change: transform;
-  animation: stars-move-small 280s linear infinite;
-}
-
-/* Deuxième masque d'étoiles - pattern aléatoire moyen */
-.stars-medium {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  z-index: 6;
-}
-
-.stars-medium::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 300%;
-  background-image: 
-    radial-gradient(1.5px 1.5px at 7% 5%, rgba(255, 255, 255, 0.7) 1px, transparent 0),
-    radial-gradient(1.5px 1.5px at 19% 34%, rgba(255, 255, 255, 0.9) 1px, transparent 0),
-    radial-gradient(1.5px 1.5px at 31% 24%, rgba(255, 255, 255, 0.8) 1px, transparent 0),
-    radial-gradient(1.5px 1.5px at 47% 12%, rgba(255, 255, 255, 0.7) 1px, transparent 0),
-    radial-gradient(1.5px 1.5px at 59% 37%, rgba(255, 255, 255, 0.8) 1px, transparent 0),
-    radial-gradient(1.5px 1.5px at 73% 61%, rgba(255, 255, 255, 0.9) 1px, transparent 0),
-    radial-gradient(1.5px 1.5px at 87% 80%, rgba(255, 255, 255, 0.7) 1px, transparent 0),
-    radial-gradient(1.5px 1.5px at 91% 38%, rgba(255, 255, 255, 0.8) 1px, transparent 0),
-    radial-gradient(1.5px 1.5px at 41% 75%, rgba(255, 255, 255, 0.8) 1px, transparent 0),
-    radial-gradient(1.5px 1.5px at 17% 87%, rgba(255, 255, 255, 0.7) 1px, transparent 0);
-  background-size: 400px 400px;
-  background-repeat: repeat;
-  transform: translateZ(0);
-  will-change: transform;
-  animation: stars-move-medium 320s linear infinite;
-}
-
-/* Troisième masque d'étoiles - grosses étoiles aléatoires */
+.stars-small,
+.stars-medium,
 .stars-large {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
   width: 100%;
   height: 100%;
-  background: transparent;
-  z-index: 7;
-}
-
-.stars-large::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 300%;
   background-image: 
-    radial-gradient(2px 2px at 8% 31%, rgba(255, 255, 255, 0.9) 1px, transparent 0),
-    radial-gradient(2px 2px at 23% 11%, rgba(255, 255, 255, 1) 1px, transparent 0),
-    radial-gradient(2px 2px at 36% 59%, rgba(255, 255, 255, 0.9) 1px, transparent 0),
-    radial-gradient(2.2px 2.2px at 53% 47%, rgba(255, 255, 255, 0.9) 1px, transparent 0),
-    radial-gradient(2px 2px at 68% 17%, rgba(255, 255, 255, 1) 1px, transparent 0),
-    radial-gradient(1.8px 1.8px at 78% 82%, rgba(255, 255, 255, 1) 1px, transparent 0),
-    radial-gradient(2.5px 2.5px at 42% 71%, rgba(255, 255, 255, 0.8) 1px, transparent 0),
-    radial-gradient(2.2px 2.2px at 94% 68%, rgba(255, 255, 255, 0.9) 1px, transparent 0);
-  background-size: 600px 600px;
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent),
+    radial-gradient(1px 1px at 80% 10%, white, transparent),
+    radial-gradient(2px 2px at 90% 60%, white, transparent),
+    radial-gradient(1px 1px at 33% 80%, white, transparent),
+    radial-gradient(1px 1px at 55% 20%, white, transparent),
+    radial-gradient(2px 2px at 15% 50%, white, transparent);
   background-repeat: repeat;
-  transform: translateZ(0);
-  will-change: transform;
-  animation: stars-move-large 360s linear infinite;
+  background-size: 200% 200%;
+  animation: stars-move 20s linear infinite;
+  opacity: 0.3;
 }
 
-/* Animations optimisées */
-@keyframes stars-move-small {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-66.6%); }
+.stars-medium {
+  background-image: 
+    radial-gradient(1.5px 1.5px at 25% 35%, white, transparent),
+    radial-gradient(1.5px 1.5px at 65% 75%, white, transparent),
+    radial-gradient(1px 1px at 45% 45%, white, transparent),
+    radial-gradient(1px 1px at 85% 15%, white, transparent),
+    radial-gradient(1.5px 1.5px at 95% 65%, white, transparent);
+  opacity: 0.2;
+  animation-duration: 30s;
 }
 
-@keyframes stars-move-medium {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-66.6%); }
+.stars-large {
+  background-image: 
+    radial-gradient(2px 2px at 30% 40%, white, transparent),
+    radial-gradient(2px 2px at 70% 80%, white, transparent),
+    radial-gradient(1.5px 1.5px at 50% 50%, white, transparent);
+  opacity: 0.15;
+  animation-duration: 40s;
 }
 
-@keyframes stars-move-large {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-66.6%); }
+@keyframes stars-move {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
 }
 
-/* Améliorations de performance pour les animations */
+/* Effets glassmorphism */
+.glass-card {
+  background: rgba(39, 39, 42, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.glass-card-light {
+  background: rgba(39, 39, 42, 0.3);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimisations GPU */
 .transform-gpu {
   transform: translateZ(0);
   will-change: transform;
 }
 
-/* Réduit la quantité d'animations pour les utilisateurs qui le préfèrent */
+/* Réduction d'animations pour accessibilité */
 @media (prefers-reduced-motion: reduce) {
-  .stars-small::after,
-  .stars-medium::after,
-  .stars-large::after {
-    animation: none !important;
-  }
-  
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  
+  .starry-sky {
+    display: none;
+  }
+}
+
+/* Masquer la scrollbar */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Effets visuels sobres */
+@keyframes subtle-glow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0px rgba(59, 130, 246, 0);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+  }
+}
+
+/* Gradient text animation */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
