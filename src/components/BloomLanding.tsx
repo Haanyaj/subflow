@@ -178,8 +178,10 @@ const BloomLanding = memo(() => {
               </a>
               
               <a
-                href="#"
-                className="flex items-center gap-2 px-4 py-2 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg border border-zinc-700 transition-all hover:scale-105 opacity-50 cursor-not-allowed"
+                href="https://play.google.com/store/apps/details?id=com.jessal.subflow"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 bg-zinc-800/80 hover:bg-zinc-700 rounded-lg border border-zinc-700 transition-all hover:scale-105"
               >
                 <img 
                   src="/assets/images/logos/google-play.svg" 
@@ -187,7 +189,7 @@ const BloomLanding = memo(() => {
                   className="w-6 h-6 object-contain"
                 />
                 <div className="text-left">
-                  <div className="text-[10px] text-zinc-400">Bientôt sur</div>
+                  <div className="text-[10px] text-zinc-400">Télécharger sur</div>
                   <div className="text-sm font-semibold">Google Play</div>
                 </div>
               </a>
