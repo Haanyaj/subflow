@@ -71,7 +71,7 @@ const ParticleNetwork = memo(() => {
         ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`;
         ctx.fill();
         
-        // Ajouter un effet de lueur
+        // Ajouter un effet
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size * 2, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity * 0.3})`;
