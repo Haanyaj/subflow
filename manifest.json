@@ -51,19 +51,19 @@
   "categories": ["finance", "utilities", "productivity", "money", "budgeting"],
   "screenshots": [
     {
-      "src": "/assets/images/subflow-start.png",
+      "src": "/assets/images/screenshots/start-screen.png",
       "sizes": "2732x2048",
       "type": "image/png",
       "label": "Tableau de bord de gestion des abonnements SubFlow"
     },
     {
-      "src": "/assets/images/subflow-mainscreen.png",
+      "src": "/assets/images/screenshots/main-screen.png",
       "sizes": "2732x2048",
       "type": "image/png",
       "label": "Analyse et suivi des abonnements avec SubFlow"
     },
     {
-      "src": "/assets/images/subflow-stat.png",
+      "src": "/assets/images/screenshots/statistics.png",
       "sizes": "2732x2048",
       "type": "image/png", 
       "label": "Économies et optimisation des abonnements avec SubFlow"
