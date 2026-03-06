@@ -1,11 +1,11 @@
-import SubFlowLanding from './components/SubFlowLanding'
-import AccessibilityEnhancer from './components/AccessibilityEnhancer'
+import BloomLanding from "./components/BloomLanding";
+import AccessibilityEnhancer from "./components/AccessibilityEnhancer";
 
 function App() {
   return (
     <>
       <AccessibilityEnhancer />
-      <SubFlowLanding />
+      <BloomLanding />
     </>
   );
 }
