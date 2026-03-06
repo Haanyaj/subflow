@@ -313,24 +313,40 @@ const BloomLanding = memo(() => {
               SubFlow<span className="text-blue-500">.</span>
             </div>
           </div>
-          <div className="flex items-center gap-1 rounded-full border border-zinc-800 bg-zinc-900/80 p-1 backdrop-blur-sm">
+          <div
+            role="group"
+            aria-label={language === "fr" ? "Sélecteur de langue" : "Language selector"}
+            className="relative flex items-center rounded-full border border-zinc-800/80 bg-zinc-900/80 p-1 shadow-[0_4px_24px_rgba(0,0,0,0.22)] backdrop-blur-md"
+          >
+            {/* sliding pill */}
+            <motion.span
+              layout
+              layoutId="lang-pill"
+              transition={{ type: "spring", stiffness: 380, damping: 32 }}
+              className={`absolute top-1 h-[calc(100%-8px)] w-[calc(50%-4px)] rounded-full bg-blue-500 shadow-[0_4px_16px_rgba(59,130,246,0.45)] ${
+                language === "fr" ? "left-1" : "left-[calc(50%+3px)]"
+              }`}
+              aria-hidden="true"
+            />
             <button
               type="button"
               onClick={() => setLanguage("fr")}
-              className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-colors sm:px-4 ${
-                language === "fr" ? "bg-blue-500 text-white" : "text-zinc-400 hover:text-white"
+              className={`relative z-10 w-10 py-1.5 text-xs font-semibold tracking-wide transition-colors duration-200 ${
+                language === "fr" ? "text-white" : "text-zinc-500 hover:text-zinc-300"
               }`}
               aria-pressed={language === "fr"}
+              aria-label="Passer le site en français"
             >
               FR
             </button>
             <button
               type="button"
               onClick={() => setLanguage("en")}
-              className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-colors sm:px-4 ${
-                language === "en" ? "bg-blue-500 text-white" : "text-zinc-400 hover:text-white"
+              className={`relative z-10 w-10 py-1.5 text-xs font-semibold tracking-wide transition-colors duration-200 ${
+                language === "en" ? "text-white" : "text-zinc-500 hover:text-zinc-300"
               }`}
               aria-pressed={language === "en"}
+              aria-label="Switch website language to English"
             >
               EN
             </button>
