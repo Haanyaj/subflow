@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -10,16 +9,12 @@ export default defineConfig({
     },
   },
   build: {
-    // Optimisations pour la production
-    target: 'es2015',
-    minify: 'esbuild',
+    target: 'es2020',
     rollupOptions: {
       output: {
-        // Optimisation du chunking
         manualChunks: {
           vendor: ['react', 'react-dom'],
         },
-        // Optimisation des noms de fichiers
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: (assetInfo) => {
@@ -35,21 +30,10 @@ export default defineConfig({
         },
       },
     },
-    // Optimisation de la taille
     chunkSizeWarningLimit: 1000,
   },
-  // Optimisations pour le développement
   server: {
     port: 3000,
     open: true,
-  },
-  // Optimisations pour le préchargement
-  optimizeDeps: {
-    include: ['react', 'react-dom'],
-  },
-  // Configuration pour le PWA
-  define: {
-    __VUE_OPTIONS_API__: false,
-    __VUE_PROD_DEVTOOLS__: false,
   },
 })

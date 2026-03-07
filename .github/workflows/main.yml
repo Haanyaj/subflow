@@ -27,5 +27,8 @@ jobs:
         server: ftp.subflow.site
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /public_html/
+        protocol: ftps
+        port: 21
+        server-dir: /
         local-dir: ./dist/
+        dangerous-clean-slate: true
