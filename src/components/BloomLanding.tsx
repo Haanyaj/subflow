@@ -15,12 +15,12 @@ const BloomLanding = memo(() => {
 
   const content = {
     fr: {
-      badge: "Reprenez le contrôle",
-      title: "Maîtrisez vos abonnements avec",
+      badge: "Suivi abonnements simplifié",
+      title: "Le suivi de vos abonnements, en toute",
       titleAccent: "simplicité.",
       description:
-        "SubFlow centralise et analyse toutes vos dépenses mensuelles. Suivez vos abonnements, identifiez les économies possibles et gardez l'esprit tranquille.",
-      benefitsTitle: "Pourquoi choisir SubFlow ?",
+        "SubFlow centralise et analyse toutes vos dépenses récurrentes. Suivi abonnements, visualisation du budget et économies identifiées en un coup d'œil.",
+      benefitsTitle: "Pourquoi SubFlow pour le suivi de vos abonnements ?",
       faqTitle: "Questions fréquentes",
       downloadOn: "Télécharger sur",
       featuredIn: "Reconnu par",
@@ -32,68 +32,73 @@ const BloomLanding = memo(() => {
       ],
       benefits: [
         {
-          title: "Suivi clair des abonnements",
+          title: "Suivi abonnements centralisé",
           description:
-            "Centralisez vos abonnements récurrents pour savoir exactement ce que vous payez chaque mois."
+            "Rassemblez tous vos abonnements au même endroit pour savoir précisément ce que vous payez chaque mois."
         },
         {
-          title: "Budget et dépenses mieux pilotés",
+          title: "Budget et dépenses sous contrôle",
           description:
-            "Repérez les postes qui augmentent, visualisez vos dépenses mensuelles et anticipez vos prélèvements."
+            "Repérez les hausses de prix, visualisez vos dépenses mensuelles et anticipez chaque prélèvement grâce au suivi automatique."
         },
         {
-          title: "Vos données restent locales",
+          title: "Vos données restent privées",
           description:
-            "Vos informations restent stockées localement sur votre appareil pour garder le contrôle sur votre confidentialité."
+            "Vos informations restent stockées localement sur votre appareil. Aucune donnée n'est partagée avec des tiers."
         },
         {
-          title: "Économies plus faciles à identifier",
+          title: "Économies identifiées rapidement",
           description:
-            "Détectez rapidement les abonnements inutilisés, les doublons et les opportunités d'optimisation."
+            "Détectez les abonnements inutilisés, les doublons et les opportunités d'optimisation pour réduire vos dépenses récurrentes."
         }
       ],
       faqs: [
         {
-          question: "Comment gérer efficacement ses abonnements mensuels ?",
+          question: "Quelle est la meilleure application de suivi abonnements ?",
           answer:
-            "SubFlow rassemble vos abonnements dans une seule interface pour suivre vos dépenses récurrentes, visualiser vos échéances et garder une vue claire sur votre budget."
+            "SubFlow est l'application de suivi abonnements la mieux notée (4,9/5 sur l'App Store). Elle centralise vos abonnements, analyse vos dépenses et vous alerte avant chaque prélèvement."
         },
         {
-          question: "Comment suivre ses dépenses d'abonnements dans le temps ?",
+          question: "Comment faire le suivi de ses abonnements mensuels ?",
           answer:
-            "L'application permet de visualiser l'évolution de vos dépenses mensuelles, d'analyser les catégories et d'identifier les tendances qui pèsent sur votre budget."
+            "Avec SubFlow, ajoutez vos abonnements en quelques secondes. L'application assure le suivi automatique de chaque échéance, avec une vue claire de vos dépenses récurrentes mois par mois."
         },
         {
-          question: "SubFlow est-elle une application gratuite ?",
+          question: "Le suivi abonnements avec SubFlow est-il gratuit ?",
           answer:
-            "Oui, SubFlow propose une expérience gratuite ainsi que des fonctionnalités avancées via SubFlow+ pour aller plus loin dans l'analyse et l'optimisation."
+            "Oui, le suivi de vos abonnements est entièrement gratuit avec SubFlow. Des fonctionnalités avancées sont disponibles via SubFlow+ pour une analyse encore plus poussée."
         },
         {
-          question: "Sur quels appareils puis-je utiliser SubFlow ?",
+          question: "Sur quels appareils puis-je faire mon suivi abonnements ?",
           answer:
-            "SubFlow est disponible sur iPhone, iPad et Android, avec une expérience pensée pour gérer facilement vos abonnements au quotidien."
+            "SubFlow est disponible sur iPhone, iPad et Android. Votre suivi abonnements est accessible partout, avec une interface conçue pour une utilisation simple au quotidien."
+        },
+        {
+          question: "Comment SubFlow m'aide à économiser sur mes abonnements ?",
+          answer:
+            "Le suivi abonnements de SubFlow détecte les services inutilisés, les doublons et les augmentations de prix pour vous permettre d'économiser en moyenne 30 % sur vos dépenses récurrentes."
         }
       ],
       slides: [
         {
           id: 1,
-          title: "Visualisez vos dépenses",
+          title: "Suivi abonnements en un coup d'œil",
           description:
-            "Accédez à une vue d'ensemble claire de vos abonnements. SubFlow regroupe toutes vos dépenses mensuelles au même endroit.",
+            "Visualisez tous vos abonnements dans une interface claire. SubFlow centralise vos dépenses récurrentes au même endroit.",
           image: "/assets/images/screenshots/subscription-overview.png"
         },
         {
           id: 2,
-          title: "Analysez vos habitudes",
+          title: "Analysez vos dépenses",
           description:
-            "Profitez de graphiques intuitifs pour comprendre vos dépenses. Identifiez les tendances et les opportunités d'optimisation.",
+            "Des graphiques intuitifs pour comprendre où va votre argent. Identifiez les tendances et optimisez vos abonnements.",
           image: "/assets/images/screenshots/spending-analytics.png"
         },
         {
           id: 3,
-          title: "Suivez votre budget",
+          title: "Budget mensuel maîtrisé",
           description:
-            "Gardez un œil sur l'évolution de vos dépenses mois après mois. SubFlow vous aide à maintenir vos objectifs financiers.",
+            "Suivez l'évolution de vos dépenses mois après mois. SubFlow vous aide à atteindre vos objectifs financiers.",
           image: "/assets/images/screenshots/monthly-budget-tracking.png"
         },
         {
