@@ -8,7 +8,6 @@ trackPerformance();
 preloadCriticalResources();
 enhanceAccessibility();
 
-document.documentElement.lang = 'fr';
 document.documentElement.setAttribute('data-theme', 'light');
 
 createRoot(document.getElementById('root')!).render(

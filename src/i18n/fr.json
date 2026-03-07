@@ -1,0 +1,118 @@
+{
+  "hero": {
+    "badge": "Suivi abonnements simplifié",
+    "title": "Le suivi de vos abonnements, en toute",
+    "titleAccent": "simplicité.",
+    "description": "SubFlow centralise et analyse toutes vos dépenses récurrentes. Suivi abonnements, visualisation du budget et économies identifiées en un coup d'œil."
+  },
+  "ui": {
+    "benefitsTitle": "Pourquoi SubFlow pour le suivi de vos abonnements ?",
+    "faqTitle": "Questions fréquentes",
+    "downloadOn": "Télécharger sur",
+    "featuredIn": "Reconnu par",
+    "rights": "Tous droits réservés."
+  },
+  "aria": {
+    "languageSelector": "Sélecteur de langue",
+    "switchToFr": "Passer le site en français",
+    "switchToEn": "Switch website language to English",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "goToSlide": "Aller au slide"
+  },
+  "socialProof": [
+    { "value": "4,9/5", "label": "note App Store" },
+    { "value": "640", "label": "notes App Store" },
+    { "value": "20K+", "label": "téléchargements" }
+  ],
+  "benefits": [
+    {
+      "title": "Suivi abonnements centralisé",
+      "description": "Rassemblez tous vos abonnements au même endroit pour savoir précisément ce que vous payez chaque mois."
+    },
+    {
+      "title": "Budget et dépenses sous contrôle",
+      "description": "Repérez les hausses de prix, visualisez vos dépenses mensuelles et anticipez chaque prélèvement grâce au suivi automatique."
+    },
+    {
+      "title": "Vos données restent privées",
+      "description": "Vos informations restent stockées localement sur votre appareil. Aucune donnée n'est partagée avec des tiers."
+    },
+    {
+      "title": "Économies identifiées rapidement",
+      "description": "Détectez les abonnements inutilisés, les doublons et les opportunités d'optimisation pour réduire vos dépenses récurrentes."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Quelle est la meilleure application de suivi abonnements ?",
+      "answer": "SubFlow est l'application de suivi abonnements la mieux notée (4,9/5 sur l'App Store). Elle centralise vos abonnements, analyse vos dépenses et vous alerte avant chaque prélèvement."
+    },
+    {
+      "question": "Comment faire le suivi de ses abonnements mensuels ?",
+      "answer": "Avec SubFlow, ajoutez vos abonnements en quelques secondes. L'application assure le suivi automatique de chaque échéance, avec une vue claire de vos dépenses récurrentes mois par mois."
+    },
+    {
+      "question": "Le suivi abonnements avec SubFlow est-il gratuit ?",
+      "answer": "Oui, le suivi de vos abonnements est entièrement gratuit avec SubFlow. Des fonctionnalités avancées sont disponibles via SubFlow+ pour une analyse encore plus poussée."
+    },
+    {
+      "question": "Sur quels appareils puis-je faire mon suivi abonnements ?",
+      "answer": "SubFlow est disponible sur iPhone, iPad et Android. Votre suivi abonnements est accessible partout, avec une interface conçue pour une utilisation simple au quotidien."
+    },
+    {
+      "question": "Comment SubFlow m'aide à économiser sur mes abonnements ?",
+      "answer": "Le suivi abonnements de SubFlow détecte les services inutilisés, les doublons et les augmentations de prix pour vous permettre d'économiser en moyenne 30 % sur vos dépenses récurrentes."
+    }
+  ],
+  "slides": [
+    {
+      "title": "Suivi abonnements en un coup d'œil",
+      "description": "Visualisez tous vos abonnements dans une interface claire. SubFlow centralise vos dépenses récurrentes au même endroit.",
+      "image": "/assets/images/screenshots/subscription-overview.png"
+    },
+    {
+      "title": "Analysez vos dépenses",
+      "description": "Des graphiques intuitifs pour comprendre où va votre argent. Identifiez les tendances et optimisez vos abonnements.",
+      "image": "/assets/images/screenshots/spending-analytics.png"
+    },
+    {
+      "title": "Budget mensuel maîtrisé",
+      "description": "Suivez l'évolution de vos dépenses mois après mois. SubFlow vous aide à atteindre vos objectifs financiers.",
+      "image": "/assets/images/screenshots/monthly-budget-tracking.png"
+    },
+    {
+      "title": "Gérez vos catégories",
+      "description": "Organisez vos abonnements par catégorie pour une meilleure visibilité de vos dépenses.",
+      "image": "/assets/images/screenshots/subscription-categories.png"
+    },
+    {
+      "title": "Détails précis",
+      "description": "Consultez le détail de chaque abonnement avec toutes les informations importantes.",
+      "image": "/assets/images/screenshots/subscription-details.png"
+    },
+    {
+      "title": "Interface intuitive",
+      "description": "Une application conçue pour être simple et agréable à utiliser au quotidien.",
+      "image": "/assets/images/screenshots/intuitive-interface.png"
+    }
+  ],
+  "seo": {
+    "title": "SubFlow - Gestion d'Abonnements | Suivi & Économies | Application Gratuite",
+    "description": "SubFlow : l'application gratuite pour gérer vos abonnements. Suivez vos dépenses mensuelles, visualisez vos économies et optimisez votre budget. Téléchargez maintenant sur iOS et Android.",
+    "keywords": "gestion abonnements, suivi abonnements, contrôle dépenses, économies mensuelles, application abonnements, SubFlow, tracker abonnements, budget mensuel, dépenses récurrentes, optimisation budget",
+    "ogLocale": "fr_FR"
+  },
+  "structuredData": {
+    "appDescription": "Application gratuite de suivi des abonnements et dépenses mensuelles pour garder le contrôle de votre budget et économiser de l'argent.",
+    "orgDescription": "Application de gestion d'abonnements pour optimiser votre budget mensuel",
+    "websiteDescription": "Site officiel de SubFlow - Application de gestion d'abonnements",
+    "screenshotCaptions": [
+      "Écran d'accueil SubFlow - Vue d'ensemble des abonnements",
+      "Tableau de bord des abonnements - Gestion centralisée",
+      "Analyses et statistiques - Suivi des dépenses"
+    ],
+    "keywords": "gestion abonnements, suivi abonnements, contrôle dépenses mensuelles, économies abonnements, tracker abonnements, application abonnements, budget mensuel, dépenses récurrentes, optimisation budget",
+    "featureList": "Visualisation des dépenses, Analyse des tendances, Rappels d'échéances, Suggestions d'économies, Catégorisation des abonnements, Suivi du budget, Alertes de prélèvement, Comparaison de services"
+  }
+}

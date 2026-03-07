@@ -1,0 +1,118 @@
+{
+  "hero": {
+    "badge": "Take back control",
+    "title": "Master your subscriptions with",
+    "titleAccent": "simplicity.",
+    "description": "SubFlow brings all your monthly spending together in one place. Track subscriptions, spot savings opportunities, and stay fully in control."
+  },
+  "ui": {
+    "benefitsTitle": "Why choose SubFlow?",
+    "faqTitle": "Frequently asked questions",
+    "downloadOn": "Download on",
+    "featuredIn": "Featured in",
+    "rights": "All rights reserved."
+  },
+  "aria": {
+    "languageSelector": "Language selector",
+    "switchToFr": "Passer le site en français",
+    "switchToEn": "Switch website language to English",
+    "previous": "Previous",
+    "next": "Next",
+    "goToSlide": "Go to slide"
+  },
+  "socialProof": [
+    { "value": "4.9/5", "label": "App Store rating" },
+    { "value": "640", "label": "App Store reviews" },
+    { "value": "20K+", "label": "downloads" }
+  ],
+  "benefits": [
+    {
+      "title": "Clear subscription tracking",
+      "description": "Bring all recurring subscriptions together so you always know exactly what you pay every month."
+    },
+    {
+      "title": "Better budget visibility",
+      "description": "Spot price increases, monitor recurring expenses, and stay ahead of upcoming charges."
+    },
+    {
+      "title": "Your data stays local",
+      "description": "Your information stays stored locally on your device so you keep control over your privacy."
+    },
+    {
+      "title": "Savings you can actually find",
+      "description": "Quickly identify unused subscriptions, duplicates, and concrete ways to optimize your spending."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "How can I manage my monthly subscriptions efficiently?",
+      "answer": "SubFlow brings your subscriptions into one interface so you can track recurring expenses, view due dates, and keep a clear picture of your budget."
+    },
+    {
+      "question": "How do I track subscription spending over time?",
+      "answer": "The app helps you visualize monthly spending trends, analyze categories, and understand how recurring costs affect your budget."
+    },
+    {
+      "question": "Is SubFlow a free app?",
+      "answer": "Yes, SubFlow offers a free experience, with advanced features available through SubFlow+ for deeper analysis and optimization."
+    },
+    {
+      "question": "Which devices support SubFlow?",
+      "answer": "SubFlow is available on iPhone, iPad, and Android, with an experience designed for simple everyday subscription management."
+    },
+    {
+      "question": "How does SubFlow help me save money on subscriptions?",
+      "answer": "SubFlow detects unused services, duplicates, and price increases so you can cut unnecessary spending and save up to 30% on your recurring expenses."
+    }
+  ],
+  "slides": [
+    {
+      "title": "See your spending clearly",
+      "description": "Get a clear overview of your subscriptions. SubFlow brings all your monthly expenses together in one place.",
+      "image": "/assets/images/screenshots/subscription-overview.png"
+    },
+    {
+      "title": "Analyze your habits",
+      "description": "Use intuitive charts to understand your spending. Spot trends and identify optimization opportunities.",
+      "image": "/assets/images/screenshots/spending-analytics.png"
+    },
+    {
+      "title": "Track your budget",
+      "description": "Keep an eye on how your spending evolves month after month. SubFlow helps you stay aligned with your financial goals.",
+      "image": "/assets/images/screenshots/monthly-budget-tracking.png"
+    },
+    {
+      "title": "Manage your categories",
+      "description": "Organize subscriptions by category for a clearer view of where your money goes.",
+      "image": "/assets/images/screenshots/subscription-categories.png"
+    },
+    {
+      "title": "Detailed insights",
+      "description": "See every subscription in detail with all the important information at a glance.",
+      "image": "/assets/images/screenshots/subscription-details.png"
+    },
+    {
+      "title": "Intuitive interface",
+      "description": "An app designed to feel simple, clear, and pleasant to use every day.",
+      "image": "/assets/images/screenshots/intuitive-interface.png"
+    }
+  ],
+  "seo": {
+    "title": "SubFlow - Subscription Manager | Track & Save | Free App",
+    "description": "SubFlow: the free app to manage your subscriptions. Track monthly expenses, visualize savings, and optimize your budget. Download now on iOS and Android.",
+    "keywords": "subscription manager, subscription tracker, expense control, monthly savings, subscription app, SubFlow, budget tracker, monthly budget, recurring expenses, budget optimization",
+    "ogLocale": "en_US"
+  },
+  "structuredData": {
+    "appDescription": "Free subscription tracking and monthly expense management app to stay in control of your budget and save money.",
+    "orgDescription": "Subscription management app to optimize your monthly budget",
+    "websiteDescription": "Official SubFlow website - Subscription management app",
+    "screenshotCaptions": [
+      "SubFlow home screen - Subscription overview",
+      "Subscription dashboard - Centralized management",
+      "Analytics and statistics - Expense tracking"
+    ],
+    "keywords": "subscription manager, subscription tracker, monthly expense control, subscription savings, subscription app, budget tracker, recurring expenses, budget optimization",
+    "featureList": "Expense visualization, Trend analysis, Due date reminders, Savings suggestions, Subscription categorization, Budget tracking, Payment alerts, Service comparison"
+  }
+}
