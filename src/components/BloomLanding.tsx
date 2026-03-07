@@ -445,7 +445,7 @@ const BloomLanding = memo(() => {
               isVisible ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0"
             }`}
           >
-            <div className="relative w-full aspect-[4/5] max-w-[320px] mx-auto flex flex-col">
+            <div className="relative w-full aspect-[4/5] max-w-[380px] sm:max-w-[420px] lg:max-w-[480px] mx-auto flex flex-col">
               
               {/* Image Presentation */}
               <div className="relative w-full flex-1 mb-8">
