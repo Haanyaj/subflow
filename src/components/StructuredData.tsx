@@ -1,13 +1,16 @@
 import { memo } from "react";
+import { useTranslation } from "../i18n/LanguageContext";
 
 const StructuredData = memo(() => {
+  const { t } = useTranslation();
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "MobileApplication",
     "name": "SubFlow",
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "iOS, Android",
-    "description": "Application gratuite de suivi des abonnements et dépenses mensuelles pour garder le contrôle de votre budget et économiser de l'argent.",
+    "description": t.structuredData.appDescription,
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -18,17 +21,17 @@ const StructuredData = memo(() => {
       {
         "@type": "ImageObject",
         "url": "https://subflowsite.netlify.app/assets/images/subflow-start.png",
-        "caption": "Écran d'accueil SubFlow - Vue d'ensemble des abonnements"
+        "caption": t.structuredData.screenshotCaptions[0]
       },
       {
         "@type": "ImageObject",
         "url": "https://subflowsite.netlify.app/assets/images/subflow-mainscreen.png",
-        "caption": "Tableau de bord des abonnements - Gestion centralisée"
+        "caption": t.structuredData.screenshotCaptions[1]
       },
       {
         "@type": "ImageObject",
         "url": "https://subflowsite.netlify.app/assets/images/subflow-stat.png",
-        "caption": "Analyses et statistiques - Suivi des dépenses"
+        "caption": t.structuredData.screenshotCaptions[2]
       }
     ],
     "aggregateRating": {
@@ -58,18 +61,17 @@ const StructuredData = memo(() => {
     "dateModified": "2025-01-19",
     "version": "1.0",
     "contentRating": "Everyone",
-    "keywords": "gestion abonnements, suivi abonnements, contrôle dépenses mensuelles, économies abonnements, tracker abonnements, application abonnements, budget mensuel, dépenses récurrentes, optimisation budget",
-    "featureList": "Visualisation des dépenses, Analyse des tendances, Rappels d'échéances, Suggestions d'économies, Catégorisation des abonnements, Suivi du budget, Alertes de prélèvement, Comparaison de services"
+    "keywords": t.structuredData.keywords,
+    "featureList": t.structuredData.featureList
   };
 
-  // Données structurées supplémentaires pour l'organisation
   const organizationData = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "SubFlow",
     "url": "https://subflowsite.netlify.app",
     "logo": "https://subflowsite.netlify.app/assets/images/icon.png",
-    "description": "Application de gestion d'abonnements pour optimiser votre budget mensuel",
+    "description": t.structuredData.orgDescription,
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "customer service",
@@ -78,13 +80,12 @@ const StructuredData = memo(() => {
     }
   };
 
-  // Données structurées pour le WebSite
   const websiteData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "SubFlow",
     "url": "https://subflowsite.netlify.app",
-    "description": "Site officiel de SubFlow - Application de gestion d'abonnements",
+    "description": t.structuredData.websiteDescription,
     "publisher": {
       "@type": "Organization",
       "name": "SubFlow"
@@ -117,4 +118,4 @@ const StructuredData = memo(() => {
 
 StructuredData.displayName = "StructuredData";
 
-export default StructuredData; 
+export default StructuredData;

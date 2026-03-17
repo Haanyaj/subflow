@@ -1,84 +1,48 @@
 {
-  "name": "SubFlow - Gestion et Suivi d'Abonnements",
+  "name": "SubFlow — Suivi Abonnements",
   "short_name": "SubFlow",
-  "description": "Application complète pour la gestion, le suivi et l'optimisation de vos abonnements et dépenses mensuelles",
+  "description": "Suivi abonnements simplifié : centralisez, analysez et maîtrisez toutes vos dépenses récurrentes avec SubFlow.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1f2937",
+  "background_color": "#09090b",
   "theme_color": "#3b82f6",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/assets/images/icon-192x192.png",
-      "sizes": "192x192",
+      "src": "/assets/images/icons/app-icon.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
-    },
-    {
-      "src": "/assets/images/icon-384x384.png",
-      "sizes": "384x384",
-      "type": "image/png"
-    },
-    {
-      "src": "/assets/images/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
     }
   ],
-  "shortcuts": [
-    {
-      "name": "Tableau de bord des abonnements",
-      "short_name": "Abonnements",
-      "description": "Voir tous mes abonnements et dépenses mensuelles",
-      "url": "/dashboard",
-      "icons": [{ "src": "/assets/images/chart-icon.png", "sizes": "96x96" }]
-    },
-    {
-      "name": "Ajouter un abonnement",
-      "short_name": "Ajouter",
-      "description": "Ajouter un nouvel abonnement à gérer et suivre",
-      "url": "/add-subscription",
-      "icons": [{ "src": "/assets/images/add-icon.png", "sizes": "96x96" }]
-    },
-    {
-      "name": "Économies recommandées",
-      "short_name": "Économies",
-      "description": "Voir les suggestions pour économiser sur vos abonnements",
-      "url": "/savings",
-      "icons": [{ "src": "/assets/images/savings-icon.png", "sizes": "96x96" }]
-    }
-  ],
-  "categories": ["finance", "utilities", "productivity", "money", "budgeting"],
+  "categories": ["finance", "utilities", "productivity"],
   "screenshots": [
     {
-      "src": "/assets/images/screenshots/start-screen.png",
-      "sizes": "2732x2048",
+      "src": "/assets/images/screenshots/subscription-overview.png",
       "type": "image/png",
-      "label": "Tableau de bord de gestion des abonnements SubFlow"
+      "label": "Suivi abonnements — Vue d'ensemble SubFlow"
     },
     {
-      "src": "/assets/images/screenshots/main-screen.png",
-      "sizes": "2732x2048",
+      "src": "/assets/images/screenshots/spending-analytics.png",
       "type": "image/png",
-      "label": "Analyse et suivi des abonnements avec SubFlow"
+      "label": "Analyse des dépenses récurrentes avec SubFlow"
     },
     {
-      "src": "/assets/images/screenshots/statistics.png",
-      "sizes": "2732x2048",
-      "type": "image/png", 
-      "label": "Économies et optimisation des abonnements avec SubFlow"
+      "src": "/assets/images/screenshots/monthly-budget-tracking.png",
+      "type": "image/png",
+      "label": "Suivi du budget mensuel avec SubFlow"
     }
   ],
   "related_applications": [
     {
       "platform": "play",
-      "url": "https://play.google.com/store/apps/details?id=app.subflow.android",
-      "id": "app.subflow.android"
+      "url": "https://play.google.com/store/apps/details?id=com.jessal.subflow",
+      "id": "com.jessal.subflow"
     },
     {
       "platform": "itunes",
       "url": "https://apps.apple.com/fr/app/subflow/id6741497228"
     }
   ],
-  "prefer_related_applications": false
-} 
+  "prefer_related_applications": true
+}

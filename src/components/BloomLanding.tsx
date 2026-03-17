@@ -1,226 +1,14 @@
 import { useState, useEffect, memo, useCallback } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-type Language = "fr" | "en";
+import { useTranslation } from "../i18n/LanguageContext";
 
 const BloomLanding = memo(() => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [language, setLanguage] = useState<Language>(() => {
-    if (typeof window === "undefined") return "fr";
-    return window.localStorage.getItem("subflow-language") === "en" ? "en" : "fr";
-  });
+  const { t, language, setLanguage } = useTranslation();
   const shouldReduceMotion = useReducedMotion();
 
-  const content = {
-    fr: {
-      badge: "Reprenez le contrôle",
-      title: "Maîtrisez vos abonnements avec",
-      titleAccent: "simplicité.",
-      description:
-        "SubFlow centralise et analyse toutes vos dépenses mensuelles. Suivez vos abonnements, identifiez les économies possibles et gardez l'esprit tranquille.",
-      benefitsTitle: "Pourquoi choisir SubFlow ?",
-      faqTitle: "Questions fréquentes",
-      downloadOn: "Télécharger sur",
-      featuredIn: "Reconnu par",
-      rights: "Tous droits réservés.",
-      socialProof: [
-        { value: "4,9/5", label: "note App Store" },
-        { value: "640", label: "notes App Store" },
-        { value: "20K+", label: "téléchargements" }
-      ],
-      benefits: [
-        {
-          title: "Suivi clair des abonnements",
-          description:
-            "Centralisez vos abonnements récurrents pour savoir exactement ce que vous payez chaque mois."
-        },
-        {
-          title: "Budget et dépenses mieux pilotés",
-          description:
-            "Repérez les postes qui augmentent, visualisez vos dépenses mensuelles et anticipez vos prélèvements."
-        },
-        {
-          title: "Vos données restent locales",
-          description:
-            "Vos informations restent stockées localement sur votre appareil pour garder le contrôle sur votre confidentialité."
-        },
-        {
-          title: "Économies plus faciles à identifier",
-          description:
-            "Détectez rapidement les abonnements inutilisés, les doublons et les opportunités d'optimisation."
-        }
-      ],
-      faqs: [
-        {
-          question: "Comment gérer efficacement ses abonnements mensuels ?",
-          answer:
-            "SubFlow rassemble vos abonnements dans une seule interface pour suivre vos dépenses récurrentes, visualiser vos échéances et garder une vue claire sur votre budget."
-        },
-        {
-          question: "Comment suivre ses dépenses d'abonnements dans le temps ?",
-          answer:
-            "L'application permet de visualiser l'évolution de vos dépenses mensuelles, d'analyser les catégories et d'identifier les tendances qui pèsent sur votre budget."
-        },
-        {
-          question: "SubFlow est-elle une application gratuite ?",
-          answer:
-            "Oui, SubFlow propose une expérience gratuite ainsi que des fonctionnalités avancées via SubFlow+ pour aller plus loin dans l'analyse et l'optimisation."
-        },
-        {
-          question: "Sur quels appareils puis-je utiliser SubFlow ?",
-          answer:
-            "SubFlow est disponible sur iPhone, iPad et Android, avec une expérience pensée pour gérer facilement vos abonnements au quotidien."
-        }
-      ],
-      slides: [
-        {
-          id: 1,
-          title: "Visualisez vos dépenses",
-          description:
-            "Accédez à une vue d'ensemble claire de vos abonnements. SubFlow regroupe toutes vos dépenses mensuelles au même endroit.",
-          image: "/assets/images/screenshots/subscription-overview.png"
-        },
-        {
-          id: 2,
-          title: "Analysez vos habitudes",
-          description:
-            "Profitez de graphiques intuitifs pour comprendre vos dépenses. Identifiez les tendances et les opportunités d'optimisation.",
-          image: "/assets/images/screenshots/spending-analytics.png"
-        },
-        {
-          id: 3,
-          title: "Suivez votre budget",
-          description:
-            "Gardez un œil sur l'évolution de vos dépenses mois après mois. SubFlow vous aide à maintenir vos objectifs financiers.",
-          image: "/assets/images/screenshots/monthly-budget-tracking.png"
-        },
-        {
-          id: 4,
-          title: "Gérez vos catégories",
-          description: "Organisez vos abonnements par catégorie pour une meilleure visibilité de vos dépenses.",
-          image: "/assets/images/screenshots/subscription-categories.png"
-        },
-        {
-          id: 5,
-          title: "Détails précis",
-          description: "Consultez le détail de chaque abonnement avec toutes les informations importantes.",
-          image: "/assets/images/screenshots/subscription-details.png"
-        },
-        {
-          id: 6,
-          title: "Interface intuitive",
-          description: "Une application conçue pour être simple et agréable à utiliser au quotidien.",
-          image: "/assets/images/screenshots/intuitive-interface.png"
-        }
-      ]
-    },
-    en: {
-      badge: "Take back control",
-      title: "Master your subscriptions with",
-      titleAccent: "simplicity.",
-      description:
-        "SubFlow brings all your monthly spending together in one place. Track subscriptions, spot savings opportunities, and stay fully in control.",
-      benefitsTitle: "Why choose SubFlow?",
-      faqTitle: "Frequently asked questions",
-      downloadOn: "Download on",
-      featuredIn: "Featured in",
-      rights: "All rights reserved.",
-      socialProof: [
-        { value: "4.9/5", label: "App Store rating" },
-        { value: "640", label: "App Store reviews" },
-        { value: "20K+", label: "downloads" }
-      ],
-      benefits: [
-        {
-          title: "Clear subscription tracking",
-          description:
-            "Bring all recurring subscriptions together so you always know exactly what you pay every month."
-        },
-        {
-          title: "Better budget visibility",
-          description:
-            "Spot price increases, monitor recurring expenses, and stay ahead of upcoming charges."
-        },
-        {
-          title: "Your data stays local",
-          description:
-            "Your information stays stored locally on your device so you keep control over your privacy."
-        },
-        {
-          title: "Savings you can actually find",
-          description:
-            "Quickly identify unused subscriptions, duplicates, and concrete ways to optimize your spending."
-        }
-      ],
-      faqs: [
-        {
-          question: "How can I manage my monthly subscriptions efficiently?",
-          answer:
-            "SubFlow brings your subscriptions into one interface so you can track recurring expenses, view due dates, and keep a clear picture of your budget."
-        },
-        {
-          question: "How do I track subscription spending over time?",
-          answer:
-            "The app helps you visualize monthly spending trends, analyze categories, and understand how recurring costs affect your budget."
-        },
-        {
-          question: "Is SubFlow a free app?",
-          answer:
-            "Yes, SubFlow offers a free experience, with advanced features available through SubFlow+ for deeper analysis and optimization."
-        },
-        {
-          question: "Which devices support SubFlow?",
-          answer:
-            "SubFlow is available on iPhone, iPad, and Android, with an experience designed for simple everyday subscription management."
-        }
-      ],
-      slides: [
-        {
-          id: 1,
-          title: "See your spending clearly",
-          description:
-            "Get a clear overview of your subscriptions. SubFlow brings all your monthly expenses together in one place.",
-          image: "/assets/images/screenshots/subscription-overview.png"
-        },
-        {
-          id: 2,
-          title: "Analyze your habits",
-          description:
-            "Use intuitive charts to understand your spending. Spot trends and identify optimization opportunities.",
-          image: "/assets/images/screenshots/spending-analytics.png"
-        },
-        {
-          id: 3,
-          title: "Track your budget",
-          description:
-            "Keep an eye on how your spending evolves month after month. SubFlow helps you stay aligned with your financial goals.",
-          image: "/assets/images/screenshots/monthly-budget-tracking.png"
-        },
-        {
-          id: 4,
-          title: "Manage your categories",
-          description: "Organize subscriptions by category for a clearer view of where your money goes.",
-          image: "/assets/images/screenshots/subscription-categories.png"
-        },
-        {
-          id: 5,
-          title: "Detailed insights",
-          description: "See every subscription in detail with all the important information at a glance.",
-          image: "/assets/images/screenshots/subscription-details.png"
-        },
-        {
-          id: 6,
-          title: "Intuitive interface",
-          description: "An app designed to feel simple, clear, and pleasant to use every day.",
-          image: "/assets/images/screenshots/intuitive-interface.png"
-        }
-      ]
-    }
-  } as const;
-
-  const t = content[language];
   const slides = t.slides;
   const socialProof = t.socialProof;
 
@@ -228,12 +16,6 @@ const BloomLanding = memo(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    window.localStorage.setItem("subflow-language", language);
-    document.documentElement.lang = language;
-  }, [language]);
 
   // Auto-slide
   useEffect(() => {
@@ -262,7 +44,6 @@ const BloomLanding = memo(() => {
         <div className="animated-ambient-beam" />
         <div className="animated-ambient-noise" />
         
-        {/* Glow 1 */}
         <motion.div 
           animate={shouldReduceMotion ? {} : {
             scale: [1, 1.18, 1],
@@ -274,7 +55,6 @@ const BloomLanding = memo(() => {
           className="absolute -top-[8%] -left-[14%] w-[260px] h-[260px] sm:w-[460px] sm:h-[460px] lg:w-[760px] lg:h-[760px] rounded-full bg-blue-500/18 blur-[90px] sm:blur-[120px]" 
         />
         
-        {/* Glow 2 */}
         <motion.div 
           animate={shouldReduceMotion ? {} : {
             scale: [1, 1.24, 1],
@@ -286,7 +66,6 @@ const BloomLanding = memo(() => {
           className="absolute top-[36%] -right-[10%] w-[220px] h-[220px] sm:w-[360px] sm:h-[360px] lg:w-[560px] lg:h-[560px] rounded-full bg-indigo-500/18 blur-[75px] sm:blur-[115px]" 
         />
 
-        {/* Glow 3 */}
         <motion.div 
           animate={shouldReduceMotion ? {} : {
             scale: [1, 1.14, 1],
@@ -315,10 +94,9 @@ const BloomLanding = memo(() => {
           </div>
           <div
             role="group"
-            aria-label={language === "fr" ? "Sélecteur de langue" : "Language selector"}
+            aria-label={t.aria.languageSelector}
             className="relative flex items-center rounded-full border border-zinc-800/80 bg-zinc-900/80 p-1 shadow-[0_4px_24px_rgba(0,0,0,0.22)] backdrop-blur-md"
           >
-            {/* sliding pill */}
             <motion.span
               layout
               layoutId="lang-pill"
@@ -335,7 +113,7 @@ const BloomLanding = memo(() => {
                 language === "fr" ? "text-white" : "text-zinc-500 hover:text-zinc-300"
               }`}
               aria-pressed={language === "fr"}
-              aria-label="Passer le site en français"
+              aria-label={t.aria.switchToFr}
             >
               FR
             </button>
@@ -346,7 +124,7 @@ const BloomLanding = memo(() => {
                 language === "en" ? "text-white" : "text-zinc-500 hover:text-zinc-300"
               }`}
               aria-pressed={language === "en"}
-              aria-label="Switch website language to English"
+              aria-label={t.aria.switchToEn}
             >
               EN
             </button>
@@ -364,15 +142,15 @@ const BloomLanding = memo(() => {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/80 w-fit mb-8">
               <span className="w-2 h-2 rounded-full bg-blue-500" />
-              <span className="text-xs font-medium text-zinc-300 tracking-wide uppercase">{t.badge}</span>
+              <span className="text-xs font-medium text-zinc-300 tracking-wide uppercase">{t.hero.badge}</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.15] text-white">
-              {t.title} <span className="text-blue-500">{t.titleAccent}</span>
+              {t.hero.title} <span className="text-blue-500">{t.hero.titleAccent}</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-zinc-400 mb-10 leading-relaxed max-w-xl">
-              {t.description}
+              {t.hero.description}
             </p>
 
             <div className="grid grid-cols-1 min-[460px]:grid-cols-3 gap-3 mb-10 max-w-2xl">
@@ -401,7 +179,7 @@ const BloomLanding = memo(() => {
               >
                 <img src="/assets/images/logos/app-store.png" alt="App Store" className="w-6 h-6 object-contain" />
                 <div className="text-left">
-                  <div className="text-[10px] text-zinc-500 tracking-wide uppercase font-semibold">{t.downloadOn}</div>
+                  <div className="text-[10px] text-zinc-500 tracking-wide uppercase font-semibold">{t.ui.downloadOn}</div>
                   <div className="text-sm font-semibold text-white">App Store</div>
                 </div>
               </a>
@@ -414,7 +192,7 @@ const BloomLanding = memo(() => {
               >
                 <img src="/assets/images/logos/google-play.svg" alt="Google Play" className="w-6 h-6 object-contain" />
                 <div className="text-left">
-                  <div className="text-[10px] text-zinc-500 tracking-wide uppercase font-semibold">{t.downloadOn}</div>
+                  <div className="text-[10px] text-zinc-500 tracking-wide uppercase font-semibold">{t.ui.downloadOn}</div>
                   <div className="text-sm font-semibold text-white">Google Play</div>
                 </div>
               </a>
@@ -422,7 +200,7 @@ const BloomLanding = memo(() => {
 
             {/* Press */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 border-t border-zinc-800/80 pt-6">
-              <span className="text-xs text-zinc-500 uppercase tracking-widest font-semibold">{t.featuredIn}</span>
+              <span className="text-xs text-zinc-500 uppercase tracking-widest font-semibold">{t.ui.featuredIn}</span>
               <div className="flex items-center gap-6">
                 <a href="https://www.numerama.com/tech/1910173-cest-quoi-subflow-cette-appli-pour-suivre-ses-abonnements-qui-est-dans-les-plus-telechargees-de-lapp-store.html" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
                   Numerama
@@ -440,7 +218,7 @@ const BloomLanding = memo(() => {
               isVisible ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0"
             }`}
           >
-            <div className="relative w-full aspect-[4/5] max-w-[320px] mx-auto flex flex-col">
+            <div className="relative w-full aspect-[4/5] max-w-[380px] sm:max-w-[420px] lg:max-w-[480px] mx-auto flex flex-col">
               
               {/* Image Presentation */}
               <div className="relative w-full flex-1 mb-8">
@@ -480,7 +258,7 @@ const BloomLanding = memo(() => {
               <button
                 onClick={prevSlide}
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors"
-                aria-label={language === "fr" ? "Précédent" : "Previous"}
+                aria-label={t.aria.previous}
               >
                 <ChevronLeft size={18} />
               </button>
@@ -491,7 +269,7 @@ const BloomLanding = memo(() => {
                     key={index}
                     onClick={() => setCurrentSlide(index)}
                     className="py-2 px-1 group"
-                    aria-label={language === "fr" ? `Aller au slide ${index + 1}` : `Go to slide ${index + 1}`}
+                    aria-label={`${t.aria.goToSlide} ${index + 1}`}
                   >
                     <div className={`h-[3px] transition-all duration-300 rounded-full ${
                       index === currentSlide 
@@ -505,7 +283,7 @@ const BloomLanding = memo(() => {
               <button
                 onClick={nextSlide}
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors"
-                aria-label={language === "fr" ? "Suivant" : "Next"}
+                aria-label={t.aria.next}
               >
                 <ChevronRight size={18} />
               </button>
@@ -521,7 +299,7 @@ const BloomLanding = memo(() => {
                 SubFlow
               </div>
               <h2 className="mt-4 text-2xl sm:text-3xl font-bold tracking-tight text-white">
-                {t.benefitsTitle}
+                {t.ui.benefitsTitle}
               </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5">
@@ -552,7 +330,7 @@ const BloomLanding = memo(() => {
                 FAQ
               </div>
               <h2 className="mt-4 text-2xl sm:text-3xl font-bold tracking-tight text-white">
-                {t.faqTitle}
+                {t.ui.faqTitle}
               </h2>
             </div>
             <div className="grid gap-4">
@@ -589,7 +367,7 @@ const BloomLanding = memo(() => {
               <span>SubFlow</span>
               <span className="text-blue-500">.</span>
             </div>
-            <p>© {new Date().getFullYear()} SubFlow. {t.rights}</p>
+            <p>© {new Date().getFullYear()} SubFlow. {t.ui.rights}</p>
           </div>
         </footer>
       </div>

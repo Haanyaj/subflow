@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://subflow.site/sitemap.xml

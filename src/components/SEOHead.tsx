@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "../i18n/LanguageContext";
 
 interface SEOHeadProps {
   title?: string;
@@ -10,38 +11,40 @@ interface SEOHeadProps {
 }
 
 const SEOHead = memo(({
-  title = "SubFlow - Gestion d'Abonnements | Suivi & Économies | Application Gratuite",
-  description = "SubFlow : l'application gratuite pour gérer vos abonnements. Suivez vos dépenses mensuelles, visualisez vos économies et optimisez votre budget. Téléchargez maintenant sur iOS et Android.",
-  keywords = "gestion abonnements, suivi abonnements, contrôle dépenses, économies mensuelles, application abonnements, SubFlow, tracker abonnements, budget mensuel, dépenses récurrentes, optimisation budget",
+  title,
+  description,
+  keywords,
   image = "https://subflowsite.netlify.app/assets/images/subflow-og-image.png",
   url = "https://subflowsite.netlify.app",
   type = "website"
 }: SEOHeadProps) => {
+  const { t } = useTranslation();
+
+  const resolvedTitle = title ?? t.seo.title;
+  const resolvedDescription = description ?? t.seo.description;
+  const resolvedKeywords = keywords ?? t.seo.keywords;
+
   const fullUrl = url.startsWith('http') ? url : `https://subflowsite.netlify.app${url}`;
   const fullImageUrl = image.startsWith('http') ? image : `https://subflowsite.netlify.app${image}`;
 
   return (
     <>
-      {/* Métadonnées de base */}
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
+      <title>{resolvedTitle}</title>
+      <meta name="description" content={resolvedDescription} />
+      <meta name="keywords" content={resolvedKeywords} />
       
-      {/* Open Graph */}
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={resolvedTitle} />
+      <meta property="og:description" content={resolvedDescription} />
       <meta property="og:image" content={fullImageUrl} />
       <meta property="og:url" content={fullUrl} />
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content="SubFlow" />
-      <meta property="og:locale" content="fr_FR" />
+      <meta property="og:locale" content={t.seo.ogLocale} />
       
-      {/* Canonical URL */}
       <link rel="canonical" href={fullUrl} />
       
-      {/* Hreflang */}
       <link rel="alternate" href={fullUrl} hrefLang="fr-fr" />
-      <link rel="alternate" href={fullUrl} hrefLang="fr" />
+      <link rel="alternate" href={fullUrl} hrefLang="en" />
       <link rel="alternate" href={fullUrl} hrefLang="x-default" />
     </>
   );
@@ -49,4 +52,4 @@ const SEOHead = memo(({
 
 SEOHead.displayName = "SEOHead";
 
-export default SEOHead; 
+export default SEOHead;
