@@ -6,7 +6,7 @@
     "description": "SubFlow centralise et analyse toutes vos dépenses récurrentes. Suivi abonnements, visualisation du budget et économies identifiées en un coup d'œil."
   },
   "ui": {
-    "benefitsTitle": "Pourquoi SubFlow pour le suivi de vos abonnements ?",
+    "benefitsTitle": "Pourquoi SubFlow pour le suivi de vos abonnements ?",
     "faqTitle": "Questions fréquentes",
     "downloadOn": "Télécharger sur",
     "featuredIn": "Reconnu par",
@@ -14,7 +14,8 @@
     "nav": {
       "features": "Fonctionnalités",
       "faq": "FAQ",
-      "download": "Télécharger"
+      "download": "Télécharger",
+      "guide": "Guide"
     },
     "benefitsEyebrow": "Pourquoi SubFlow",
     "benefitsLead": "Tout ce que vous payez chaque mois, enfin réuni dans un espace clair et serein.",
@@ -22,8 +23,8 @@
     "floating": {
       "nextCharge": "Prochain prélèvement",
       "nextChargeValue": "Netflix · demain",
-      "saved": "Économisé cette année",
-      "local": "100 % sur l'appareil"
+      "local": "100 % sur l'appareil",
+      "saved": "Économisé cette année"
     },
     "cta": {
       "title": "Reprenez le contrôle de vos abonnements.",
@@ -37,7 +38,12 @@
     "switchToEn": "Switch website language to English",
     "previous": "Précédent",
     "next": "Suivant",
-    "goToSlide": "Aller au slide"
+    "goToSlide": "Aller au slide",
+    "skipToContent": "Aller au contenu",
+    "mainNav": "Navigation principale",
+    "carousel": "Aperçu de l'application SubFlow",
+    "pause": "Mettre le défilement en pause",
+    "play": "Relancer le défilement"
   },
   "socialProof": [
     {
@@ -73,56 +79,68 @@
   ],
   "faqs": [
     {
-      "question": "Quelle est la meilleure application de suivi abonnements ?",
+      "question": "Quelle est la meilleure application de suivi abonnements ?",
       "answer": "SubFlow est l'application de suivi abonnements la mieux notée (4,9/5 sur l'App Store). Elle centralise vos abonnements, analyse vos dépenses et vous alerte avant chaque prélèvement."
     },
     {
-      "question": "Comment faire le suivi de ses abonnements mensuels ?",
+      "question": "Comment faire le suivi de ses abonnements mensuels ?",
       "answer": "Avec SubFlow, ajoutez vos abonnements en quelques secondes. L'application assure le suivi automatique de chaque échéance, avec une vue claire de vos dépenses récurrentes mois par mois."
     },
     {
-      "question": "Le suivi abonnements avec SubFlow est-il gratuit ?",
+      "question": "Le suivi abonnements avec SubFlow est-il gratuit ?",
       "answer": "Oui, le suivi de vos abonnements est entièrement gratuit avec SubFlow. Des fonctionnalités avancées sont disponibles via SubFlow+ pour une analyse encore plus poussée."
     },
     {
-      "question": "Sur quels appareils puis-je faire mon suivi abonnements ?",
+      "question": "Sur quels appareils puis-je faire mon suivi abonnements ?",
       "answer": "SubFlow est disponible sur iPhone, iPad et Android. Votre suivi abonnements est accessible partout, avec une interface conçue pour une utilisation simple au quotidien."
     },
     {
-      "question": "Comment SubFlow m'aide à économiser sur mes abonnements ?",
-      "answer": "Le suivi abonnements de SubFlow détecte les services inutilisés, les doublons et les augmentations de prix pour vous permettre d'économiser en moyenne 30 % sur vos dépenses récurrentes."
+      "question": "Comment SubFlow m'aide à économiser sur mes abonnements ?",
+      "answer": "Le suivi abonnements de SubFlow détecte les services inutilisés, les doublons et les augmentations de prix pour vous aider à supprimer les dépenses récurrentes inutiles."
+    },
+    {
+      "question": "Comment savoir combien je dépense en abonnements chaque mois ?",
+      "answer": "Ajoutez vos abonnements dans SubFlow : l'application calcule le total de vos dépenses récurrentes et les classe par catégorie, pour voir immédiatement où part votre argent chaque mois."
+    },
+    {
+      "question": "SubFlow me prévient-il avant un prélèvement ?",
+      "answer": "Oui. SubFlow vous alerte avant chaque échéance pour éviter les prélèvements surprises et vous laisser le temps de résilier un abonnement dont vous n'avez plus besoin."
+    },
+    {
+      "question": "Mes données sont-elles en sécurité avec SubFlow ?",
+      "answer": "Vos informations restent stockées localement sur votre appareil. Aucune donnée n'est partagée avec des tiers."
     }
   ],
   "slides": [
     {
       "title": "Suivi abonnements en un coup d'œil",
       "description": "Visualisez tous vos abonnements dans une interface claire. SubFlow centralise vos dépenses récurrentes au même endroit.",
-      "image": "/assets/images/screenshots/subscription-overview.png"
+      "image": "/assets/images/screenshots/subscription-overview.webp"
     },
     {
       "title": "Analysez vos dépenses",
       "description": "Des graphiques intuitifs pour comprendre où va votre argent. Identifiez les tendances et optimisez vos abonnements.",
-      "image": "/assets/images/screenshots/spending-analytics.png"
+      "image": "/assets/images/screenshots/spending-analytics.webp"
     },
     {
       "title": "Budget mensuel maîtrisé",
       "description": "Suivez l'évolution de vos dépenses mois après mois. SubFlow vous aide à atteindre vos objectifs financiers.",
-      "image": "/assets/images/screenshots/monthly-budget-tracking.png"
+      "image": "/assets/images/screenshots/monthly-budget-tracking.webp"
     },
     {
       "title": "Gérez vos catégories",
       "description": "Organisez vos abonnements par catégorie pour une meilleure visibilité de vos dépenses.",
-      "image": "/assets/images/screenshots/subscription-categories.png"
+      "image": "/assets/images/screenshots/subscription-categories.webp"
     },
     {
       "title": "Détails précis",
       "description": "Consultez le détail de chaque abonnement avec toutes les informations importantes.",
-      "image": "/assets/images/screenshots/subscription-details.png"
+      "image": "/assets/images/screenshots/subscription-details.webp"
     },
     {
       "title": "Interface intuitive",
       "description": "Une application conçue pour être simple et agréable à utiliser au quotidien.",
-      "image": "/assets/images/screenshots/intuitive-interface.png"
+      "image": "/assets/images/screenshots/intuitive-interface.webp"
     }
   ],
   "seo": {
@@ -142,5 +160,52 @@
     ],
     "keywords": "gestion abonnements, suivi abonnements, contrôle dépenses mensuelles, économies abonnements, tracker abonnements, application abonnements, budget mensuel, dépenses récurrentes, optimisation budget",
     "featureList": "Visualisation des dépenses, Analyse des tendances, Rappels d'échéances, Suggestions d'économies, Catégorisation des abonnements, Suivi du budget, Alertes de prélèvement, Comparaison de services"
+  },
+  "guide": {
+    "eyebrow": "Guide",
+    "title": "Le suivi des abonnements, c'est quoi ?",
+    "definition": "Le suivi des abonnements consiste à recenser toutes vos dépenses récurrentes (streaming, musique, forfait mobile, salle de sport, assurances, logiciels) pour savoir combien elles coûtent chaque mois, quand elles sont prélevées et lesquelles sont encore utiles. SubFlow est une application gratuite pour iPhone, iPad et Android qui centralise ce suivi et vous alerte avant chaque prélèvement.",
+    "stepsTitle": "Comment suivre ses abonnements en 3 étapes",
+    "steps": [
+      {
+        "title": "Listez vos abonnements",
+        "description": "Ajoutez chaque abonnement dans SubFlow avec son montant, sa fréquence et sa date de prélèvement. Netflix, Spotify, Disney+ ou forfait mobile : quelques secondes suffisent."
+      },
+      {
+        "title": "Visualisez votre budget",
+        "description": "Le calendrier et les graphiques affichent le total de vos dépenses récurrentes, leur répartition par catégorie et les prochains prélèvements."
+      },
+      {
+        "title": "Faites le tri",
+        "description": "Repérez les abonnements inutilisés, les doublons et les hausses de prix, puis résiliez ceux dont vous n'avez plus besoin."
+      }
+    ],
+    "factsTitle": "SubFlow en bref",
+    "facts": [
+      {
+        "label": "Prix",
+        "value": "Gratuit, SubFlow+ en option"
+      },
+      {
+        "label": "Appareils",
+        "value": "iPhone, iPad et Android"
+      },
+      {
+        "label": "Note",
+        "value": "4,9/5 sur l'App Store (640 notes)"
+      },
+      {
+        "label": "Téléchargements",
+        "value": "Plus de 20 000"
+      },
+      {
+        "label": "Données",
+        "value": "Stockées localement sur votre appareil"
+      },
+      {
+        "label": "Presse",
+        "value": "Numerama, JustGeek"
+      }
+    ]
   }
 }

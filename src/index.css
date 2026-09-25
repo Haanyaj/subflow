@@ -6,7 +6,7 @@
   --bg: #05070d;
   --ink: #f4f6fb;
   --ink-soft: rgba(226, 232, 245, 0.72);
-  --ink-mute: rgba(200, 210, 230, 0.5);
+  --ink-mute: rgba(200, 210, 230, 0.66);
   --accent: #2f7bff;
   --accent-2: #6aa6ff;
   --glass-fill: linear-gradient(145deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.02) 100%);
@@ -259,6 +259,17 @@ button {
 }
 
 /* ---------- Misc ---------- */
+
+/* Hero entrance runs in CSS so the prerendered page animates on first paint,
+   without waiting for JavaScript (keeps LCP fast). */
+.hero-rise {
+  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
 
 .float-slow {
   animation: float-y 7s ease-in-out infinite;

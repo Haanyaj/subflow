@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   plugins: [react()],
   resolve: {
     alias: {
@@ -10,13 +10,16 @@ export default defineConfig({
   },
   build: {
     target: 'es2020',
+    copyPublicDir: !isSsrBuild,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-        },
+        manualChunks: isSsrBuild
+          ? undefined
+          : {
+              vendor: ['react', 'react-dom'],
+            },
         chunkFileNames: 'assets/js/[name]-[hash].js',
-        entryFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: isSsrBuild ? '[name].js' : 'assets/js/[name]-[hash].js',
         assetFileNames: (assetInfo) => {
           const info = assetInfo.name?.split('.') || []
           const ext = info[info.length - 1] || 'unknown'
@@ -36,4 +39,4 @@ export default defineConfig({
     port: 3000,
     open: true,
   },
-})
+}))

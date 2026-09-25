@@ -11,6 +11,8 @@ import {
   ArrowUp,
   Star,
   BellRing,
+  Pause,
+  Play,
 } from "lucide-react";
 import { useTranslation, type Language } from "../i18n/LanguageContext";
 
@@ -62,7 +64,7 @@ const Wordmark = ({ className = "" }: { className?: string }) => (
 const StoreButtons = ({ label }: { label: string }) => (
   <div className="grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:gap-3">
     {[
-      { href: APP_STORE_URL, icon: "/assets/images/logos/app-store.png", name: "App Store" },
+      { href: APP_STORE_URL, icon: "/assets/images/logos/app-store.webp", name: "App Store" },
       { href: PLAY_STORE_URL, icon: "/assets/images/logos/google-play.svg", name: "Google Play" },
     ].map((store) => (
       <a
@@ -72,7 +74,7 @@ const StoreButtons = ({ label }: { label: string }) => (
         rel="noopener noreferrer"
         className="glass glass-button flex items-center gap-2.5 rounded-2xl py-3 pl-3 pr-3 sm:gap-3 sm:pl-4 sm:pr-6"
       >
-        <img src={store.icon} alt="" aria-hidden="true" className="h-6 w-6 shrink-0 object-contain sm:h-7 sm:w-7" />
+        <img src={store.icon} alt="" aria-hidden="true" width={28} height={28} className="h-6 w-6 shrink-0 object-contain sm:h-7 sm:w-7" />
         <span className="text-left leading-tight">
           <span className="block whitespace-nowrap text-[9px] font-semibold uppercase tracking-[0.12em] text-[var(--ink-mute)] sm:text-[10px] sm:tracking-[0.14em]">
             {label}
@@ -93,7 +95,8 @@ const Eyebrow = ({ children }: { children: string }) => (
 
 const BloomLanding = memo(() => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [autoplay, setAutoplay] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const { t, language, setLanguage } = useTranslation();
   const shouldReduceMotion = useReducedMotion();
@@ -109,12 +112,12 @@ const BloomLanding = memo(() => {
   }, []);
 
   useEffect(() => {
-    if (shouldReduceMotion || isPaused) return;
+    if (shouldReduceMotion || isHovered || !autoplay) return;
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 6000);
     return () => clearInterval(interval);
-  }, [slides.length, shouldReduceMotion, isPaused]);
+  }, [slides.length, shouldReduceMotion, isHovered, autoplay]);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -136,15 +139,18 @@ const BloomLanding = memo(() => {
         <div className="ambient-grain" />
       </div>
 
-      {/* Floating glass navigation */}
-      <motion.header
-        initial={{ opacity: 0, y: -16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: EASE }}
-        className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6"
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-white focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-[#05070d]"
       >
+        {t.aria.skipToContent}
+      </a>
+
+      {/* Floating glass navigation */}
+      <header className="hero-rise fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
         <nav
-          className={`glass mx-auto flex max-w-6xl items-center justify-between rounded-full py-2 pl-5 pr-2 transition-all duration-500 ${
+          aria-label={t.aria.mainNav}
+          className={`glass mx-auto flex max-w-6xl items-center justify-between rounded-full py-2 pl-5 pr-2 transition-shadow duration-500 ${
             scrolled ? "shadow-[0_20px_50px_-20px_rgba(0,0,0,0.8)]" : ""
           }`}
         >
@@ -153,12 +159,19 @@ const BloomLanding = memo(() => {
           </a>
 
           <div className="hidden items-center gap-1 md:flex">
-            <a href="#features" className="rounded-full px-4 py-2 text-sm font-medium text-[var(--ink-soft)] transition-colors hover:bg-white/5 hover:text-white">
-              {ui.nav.features}
-            </a>
-            <a href="#faq" className="rounded-full px-4 py-2 text-sm font-medium text-[var(--ink-soft)] transition-colors hover:bg-white/5 hover:text-white">
-              {ui.nav.faq}
-            </a>
+            {([
+              ["#features", ui.nav.features],
+              ["#guide", ui.nav.guide],
+              ["#faq", ui.nav.faq],
+            ] as const).map(([href, label]) => (
+              <a
+                key={href}
+                href={href}
+                className="rounded-full px-4 py-2 text-sm font-medium text-[var(--ink-soft)] transition-colors hover:bg-white/5 hover:text-white"
+              >
+                {label}
+              </a>
+            ))}
           </div>
 
           <div className="flex items-center gap-2">
@@ -171,12 +184,13 @@ const BloomLanding = memo(() => {
                 <button
                   key={lang}
                   type="button"
+                  lang={lang}
                   onClick={() => setLanguage(lang)}
-                  className={`relative z-10 !min-h-0 !min-w-0 w-10 rounded-full py-1.5 text-xs font-semibold tracking-wide transition-colors duration-200 ${
+                  className={`relative z-10 !min-h-0 !min-w-0 h-8 w-11 rounded-full text-xs font-semibold tracking-wide transition-colors duration-200 ${
                     language === lang ? "text-white" : "text-[var(--ink-mute)] hover:text-white"
                   }`}
                   aria-pressed={language === lang}
-                  aria-label={lang === "fr" ? t.aria.switchToFr : t.aria.switchToEn}
+                  aria-label={`${lang.toUpperCase()} – ${lang === "fr" ? t.aria.switchToFr : t.aria.switchToEn}`}
                 >
                   {language === lang && (
                     <motion.span
@@ -198,51 +212,54 @@ const BloomLanding = memo(() => {
             </a>
           </div>
         </nav>
-      </motion.header>
+      </header>
 
       <div id="top" className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6">
-        {/* Hero */}
-        <main className="grid items-center gap-14 pb-16 pt-32 sm:pt-36 lg:min-h-screen lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:pb-20 lg:pt-28">
-          <motion.div variants={stagger} initial="hidden" animate="show" className="flex flex-col">
-            <motion.div variants={rise}>
+        <main id="main" tabIndex={-1} className="outline-none">
+        {/* Hero — revealed with CSS so it paints before JavaScript loads */}
+        <section
+          aria-labelledby="hero-title"
+          className="grid items-center gap-14 pb-16 pt-32 sm:pt-36 lg:min-h-screen lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:pb-20 lg:pt-28"
+        >
+          <div className="flex flex-col">
+            <div className="hero-rise" style={{ animationDelay: "60ms" }}>
               <span className="glass-subtle inline-flex items-center gap-2.5 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--ink-soft)]">
-                <span className="pulse-dot h-2 w-2 rounded-full bg-[#2f7bff] text-[#2f7bff]" />
+                <span className="pulse-dot h-2 w-2 rounded-full bg-[#2f7bff] text-[#2f7bff]" aria-hidden="true" />
                 {t.hero.badge}
               </span>
-            </motion.div>
+            </div>
 
-            <motion.h1
-              variants={rise}
+            <h1
+              id="hero-title"
               className="font-display mt-7 text-[clamp(2.5rem,6vw,4.4rem)] font-bold leading-[1.02] tracking-[-0.035em] text-white"
             >
               {t.hero.title}{" "}
               <span className="font-serif-accent text-gradient pr-2 text-[1.12em] leading-[0.9]">
                 {t.hero.titleAccent}
               </span>
-            </motion.h1>
+            </h1>
 
-            <motion.p variants={rise} className="mt-6 max-w-xl text-lg leading-relaxed text-[var(--ink-soft)] sm:text-xl">
+            <p className="hero-rise mt-6 max-w-xl text-lg leading-relaxed text-[var(--ink-soft)] sm:text-xl" style={{ animationDelay: "120ms" }}>
               {t.hero.description}
-            </motion.p>
+            </p>
 
-            <motion.div variants={rise} className="mt-9">
+            <div className="hero-rise mt-9" style={{ animationDelay: "180ms" }}>
               <StoreButtons label={ui.downloadOn} />
-            </motion.div>
+            </div>
 
-            <motion.dl variants={rise} className="glass mt-9 grid max-w-xl grid-cols-3 rounded-3xl">
+            <dl className="hero-rise glass mt-9 grid max-w-xl grid-cols-3 rounded-3xl" style={{ animationDelay: "240ms" }}>
               {t.socialProof.map((item, i) => (
-                <div key={item.label} className={`px-4 py-5 sm:px-6 ${i > 0 ? "border-l border-white/10" : ""}`}>
-                  <dt className="sr-only">{item.label}</dt>
+                <div key={item.label} className={`flex flex-col-reverse px-4 py-5 sm:px-6 ${i > 0 ? "border-l border-white/10" : ""}`}>
+                  <dt className="mt-1 text-xs text-[var(--ink-mute)] sm:text-sm">{item.label}</dt>
                   <dd className="font-display flex items-center gap-1.5 text-2xl font-bold tracking-tight text-white sm:text-3xl">
                     {item.value}
                     {i === 0 && <Star size={16} className="fill-amber-300 text-amber-300" aria-hidden="true" />}
                   </dd>
-                  <dd className="mt-1 text-xs text-[var(--ink-mute)] sm:text-sm">{item.label}</dd>
                 </div>
               ))}
-            </motion.dl>
+            </dl>
 
-            <motion.div variants={rise} className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <div className="hero-rise mt-8 flex flex-wrap items-center gap-x-6 gap-y-3" style={{ animationDelay: "300ms" }}>
               <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--ink-mute)]">
                 {ui.featuredIn}
               </span>
@@ -262,44 +279,54 @@ const BloomLanding = memo(() => {
               >
                 JustGeek
               </a>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
-          {/* Showcase */}
-          <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1.1, ease: EASE, delay: 0.25 }}
-            className="relative mx-auto w-full max-w-[400px]"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
+          {/* Showcase — the phone floats directly on the page, no frame */}
+          <div
+            role="region"
+            aria-roledescription="carousel"
+            aria-label={t.aria.carousel}
+            className="hero-rise relative mx-auto w-full max-w-[400px]"
+            style={{ animationDelay: "160ms" }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onFocus={() => setIsHovered(true)}
+            onBlur={(e) => {
+              if (!e.currentTarget.contains(e.relatedTarget)) setIsHovered(false);
+            }}
           >
-            {/* Halo behind the glass */}
+            {/* Light pooling behind and beneath the phone */}
             <div
-              className="absolute left-1/2 top-[42%] h-[70%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(47,123,255,0.55),rgba(122,92,255,0.25)_45%,transparent_70%)] blur-3xl"
+              className="pointer-events-none absolute left-1/2 top-[42%] h-[70%] w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(47,123,255,0.5),rgba(122,92,255,0.22)_45%,transparent_70%)] blur-3xl"
+              aria-hidden="true"
+            />
+            <div
+              className="pointer-events-none absolute bottom-[21%] left-1/2 h-10 w-[70%] -translate-x-1/2 rounded-[100%] bg-black/60 blur-2xl"
               aria-hidden="true"
             />
 
-            <div className="glass-strong relative overflow-hidden rounded-[40px] p-5 sm:p-6">
-              <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" aria-hidden="true" />
-              <div className="relative aspect-[504/824] w-full">
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={currentSlide}
-                    src={slides[currentSlide].image}
-                    alt={slides[currentSlide].title}
-                    className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_30px_40px_rgba(0,0,0,0.55)]"
-                    initial={{ opacity: 0, y: 24, rotate: -1.5 }}
-                    animate={{ opacity: 1, y: 0, rotate: 0 }}
-                    exit={{ opacity: 0, y: -16, rotate: 1 }}
-                    transition={{ duration: shouldReduceMotion ? 0.1 : 0.6, ease: EASE }}
-                  />
-                </AnimatePresence>
-              </div>
+            <div className="relative aspect-[504/824] w-full">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.img
+                  key={currentSlide}
+                  src={slides[currentSlide].image}
+                  alt={slides[currentSlide].title}
+                  width={504}
+                  height={824}
+                  decoding="async"
+                  {...{ fetchpriority: currentSlide === 0 ? "high" : "auto" }}
+                  className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.55)]"
+                  initial={{ opacity: 0, y: 24, rotate: -1.5 }}
+                  animate={{ opacity: 1, y: 0, rotate: 0 }}
+                  exit={{ opacity: 0, y: -16, rotate: 1 }}
+                  transition={{ duration: shouldReduceMotion ? 0.1 : 0.6, ease: EASE }}
+                />
+              </AnimatePresence>
             </div>
 
-            {/* Floating glass chips */}
-            <div className="glass float-slow absolute -left-3 top-[14%] hidden items-center gap-3 rounded-2xl py-3 pl-3 pr-4 sm:-left-12 sm:flex" aria-hidden="true">
+            {/* Floating glass chips (decorative) */}
+            <div data-nosnippet className="glass float-slow absolute -left-3 top-[14%] hidden items-center gap-3 rounded-2xl py-3 pl-3 pr-4 sm:-left-12 sm:flex" aria-hidden="true">
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-rose-500/20 text-rose-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]">
                 <BellRing size={17} />
               </span>
@@ -310,7 +337,7 @@ const BloomLanding = memo(() => {
               <span className="ml-1 text-sm font-semibold text-rose-300">{formatEuro(-15.99, language)}</span>
             </div>
 
-            <div className="glass float-slower absolute -right-3 bottom-[26%] hidden items-center gap-3 rounded-2xl py-3 pl-3 pr-4 sm:-right-10 sm:flex" aria-hidden="true">
+            <div data-nosnippet className="glass float-slower absolute -right-3 bottom-[30%] hidden items-center gap-3 rounded-2xl py-3 pl-3 pr-4 sm:-right-10 sm:flex" aria-hidden="true">
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-400/20 text-emerald-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]">
                 <PiggyBank size={17} />
               </span>
@@ -320,14 +347,14 @@ const BloomLanding = memo(() => {
               </span>
             </div>
 
-            <div className="glass-subtle float-slow absolute -right-2 top-[6%] hidden items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium text-[var(--ink-soft)] sm:-right-6 sm:flex" aria-hidden="true">
+            <div data-nosnippet className="glass-subtle float-slow absolute -right-2 top-[6%] hidden items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium text-[var(--ink-soft)] sm:-right-6 sm:flex" aria-hidden="true">
               <ShieldCheck size={14} className="text-[#6aa6ff]" />
               {ui.floating.local}
             </div>
 
             {/* Slide caption + controls */}
-            <div className="mt-6 min-h-[84px] text-center">
-              <AnimatePresence mode="wait">
+            <div className="mt-6 min-h-[84px] text-center" aria-live={autoplay ? "off" : "polite"}>
+              <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={currentSlide}
                   initial={{ opacity: 0, y: 8 }}
@@ -335,7 +362,7 @@ const BloomLanding = memo(() => {
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.35 }}
                 >
-                  <h3 className="font-display text-lg font-semibold text-white">{slides[currentSlide].title}</h3>
+                  <p className="font-display text-lg font-semibold text-white">{slides[currentSlide].title}</p>
                   <p className="mx-auto mt-1.5 max-w-sm text-sm leading-relaxed text-[var(--ink-soft)]">
                     {slides[currentSlide].description}
                   </p>
@@ -343,7 +370,15 @@ const BloomLanding = memo(() => {
               </AnimatePresence>
             </div>
 
-            <div className="glass mx-auto mt-4 flex w-fit items-center gap-2 rounded-full p-1.5">
+            <div className="glass mx-auto mt-4 flex w-fit items-center gap-1 rounded-full p-1.5">
+              <button
+                type="button"
+                onClick={() => setAutoplay((on) => !on)}
+                className="flex h-10 w-10 items-center justify-center rounded-full text-[var(--ink-soft)] transition-colors hover:bg-white/10 hover:text-white"
+                aria-label={autoplay ? t.aria.pause : t.aria.play}
+              >
+                {autoplay ? <Pause size={16} /> : <Play size={16} />}
+              </button>
               <button
                 type="button"
                 onClick={prevSlide}
@@ -358,15 +393,15 @@ const BloomLanding = memo(() => {
                     key={slide.image}
                     type="button"
                     onClick={() => setCurrentSlide(index)}
-                    className="group !min-w-0 px-1 py-2"
-                    aria-label={`${t.aria.goToSlide} ${index + 1}`}
-                    aria-current={index === currentSlide}
+                    className="group flex !min-h-0 !min-w-0 h-10 w-6 items-center justify-center"
+                    aria-label={`${t.aria.goToSlide} ${index + 1} : ${slide.title}`}
+                    aria-current={index === currentSlide ? "true" : undefined}
                   >
                     <span
                       className={`block h-1.5 rounded-full transition-all duration-500 ${
                         index === currentSlide
-                          ? "w-7 bg-gradient-to-r from-[#6aa6ff] to-[#2f7bff] shadow-[0_0_12px_rgba(47,123,255,0.8)]"
-                          : "w-1.5 bg-white/25 group-hover:bg-white/50"
+                          ? "w-5 bg-gradient-to-r from-[#6aa6ff] to-[#2f7bff] shadow-[0_0_12px_rgba(47,123,255,0.8)]"
+                          : "w-1.5 bg-white/40 group-hover:bg-white/70"
                       }`}
                     />
                   </button>
@@ -381,8 +416,8 @@ const BloomLanding = memo(() => {
                 <ChevronRight size={18} />
               </button>
             </div>
-          </motion.div>
-        </main>
+          </div>
+        </section>
 
         {/* Benefits — glass bento */}
         <motion.section
@@ -431,6 +466,58 @@ const BloomLanding = memo(() => {
               );
             })}
           </div>
+        </motion.section>
+
+        {/* Guide — answer-first content that search and AI engines can quote */}
+        <motion.section
+          id="guide"
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          className="py-16 sm:py-24"
+        >
+          <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
+            <motion.div variants={rise}>
+              <Eyebrow>{t.guide.eyebrow}</Eyebrow>
+              <h2 className="font-display mt-5 text-3xl font-bold tracking-[-0.03em] text-white sm:text-5xl">
+                {t.guide.title}
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-[var(--ink-soft)] sm:text-xl">{t.guide.definition}</p>
+            </motion.div>
+
+            <motion.aside variants={rise} className="glass rounded-[32px] p-7 sm:p-8 lg:self-end">
+              <h3 className="font-display text-lg font-semibold text-white">{t.guide.factsTitle}</h3>
+              <dl className="mt-5 divide-y divide-white/10">
+                {t.guide.facts.map((fact) => (
+                  <div key={fact.label} className="flex items-baseline justify-between gap-6 py-3 text-sm">
+                    <dt className="shrink-0 text-[var(--ink-mute)]">{fact.label}</dt>
+                    <dd className="text-right font-medium text-white">{fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </motion.aside>
+          </div>
+
+          <motion.h3 variants={rise} className="font-display mt-16 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+            {t.guide.stepsTitle}
+          </motion.h3>
+          <ol className="mt-8 grid gap-4 sm:gap-5 md:grid-cols-3">
+            {t.guide.steps.map((step, index) => (
+              <motion.li
+                key={step.title}
+                variants={rise}
+                onMouseMove={trackSpotlight}
+                className="glass glass-spotlight rounded-[28px] p-7"
+              >
+                <span className="font-serif-accent text-4xl leading-none text-[#6aa6ff]" aria-hidden="true">
+                  {index + 1}.
+                </span>
+                <h4 className="font-display mt-6 text-lg font-semibold text-white">{step.title}</h4>
+                <p className="mt-2 leading-relaxed text-[var(--ink-soft)]">{step.description}</p>
+              </motion.li>
+            ))}
+          </ol>
         </motion.section>
 
         {/* FAQ */}
@@ -485,9 +572,13 @@ const BloomLanding = memo(() => {
             <div className="pointer-events-none absolute -bottom-40 left-1/2 h-80 w-[120%] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(47,123,255,0.55),rgba(122,92,255,0.2)_45%,transparent_70%)] blur-3xl" aria-hidden="true" />
             <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent" aria-hidden="true" />
             <img
-              src="/assets/images/icons/app-icon.png"
+              src="/assets/images/icons/app-icon-160.webp"
               alt=""
               aria-hidden="true"
+              width={80}
+              height={80}
+              loading="lazy"
+              decoding="async"
               className="relative mx-auto h-20 w-20 rounded-[22px] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.15)]"
             />
             <h2 className="font-display relative mx-auto mt-8 max-w-2xl text-3xl font-bold tracking-[-0.03em] text-white sm:text-5xl">
@@ -499,6 +590,8 @@ const BloomLanding = memo(() => {
             </div>
           </div>
         </motion.section>
+
+        </main>
 
         <footer className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-8 text-sm text-[var(--ink-mute)] sm:flex-row">
           <Wordmark className="text-xl" />

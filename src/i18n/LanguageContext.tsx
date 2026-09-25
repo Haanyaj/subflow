@@ -16,21 +16,34 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-function getInitialLanguage(): Language {
-  if (typeof window === "undefined") return "fr";
-  return window.localStorage.getItem("subflow-language") === "en" ? "en" : "fr";
+function getStoredLanguage(): Language | null {
+  try {
+    return window.localStorage.getItem("subflow-language") === "en" ? "en" : null;
+  } catch {
+    return null;
+  }
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(getInitialLanguage);
+  // Always start in French so the client matches the prerendered HTML,
+  // then switch to the stored preference once hydrated.
+  const [language, setLanguageState] = useState<Language>("fr");
+
+  useEffect(() => {
+    const stored = getStoredLanguage();
+    if (stored) setLanguageState(stored);
+  }, []);
 
   const setLanguage = useCallback((lang: Language) => {
     setLanguageState(lang);
   }, []);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    window.localStorage.setItem("subflow-language", language);
+    try {
+      window.localStorage.setItem("subflow-language", language);
+    } catch {
+      // Storage unavailable (private mode); the choice just won't persist.
+    }
     document.documentElement.lang = language;
   }, [language]);
 

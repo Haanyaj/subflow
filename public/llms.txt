@@ -1,0 +1,38 @@
+# SubFlow
+
+> SubFlow est une application gratuite de suivi des abonnements pour iPhone, iPad et Android. Elle centralise toutes les dépenses récurrentes (streaming, musique, forfait mobile, salle de sport, assurances, logiciels), affiche le total mensuel et les prochains prélèvements, et alerte avant chaque échéance.
+
+## Faits clés
+
+- Prix : gratuit, avec un abonnement optionnel SubFlow+ pour les analyses avancées
+- Plateformes : iPhone, iPad et Android
+- Note : 4,9/5 sur l'App Store (640 notes)
+- Téléchargements : plus de 20 000
+- Confidentialité : les données restent stockées localement sur l'appareil, aucune donnée partagée avec des tiers
+- Langues : français et anglais
+- Presse : Numerama, JustGeek
+
+## Fonctionnalités
+
+- Suivi centralisé de tous les abonnements (montant, fréquence, date de prélèvement)
+- Calendrier des prélèvements et rappels avant chaque échéance
+- Graphiques des dépenses récurrentes et répartition par catégorie
+- Détection des abonnements inutilisés, des doublons et des hausses de prix
+
+## Comment suivre ses abonnements avec SubFlow
+
+1. Listez vos abonnements : ajoutez chacun avec son montant, sa fréquence et sa date de prélèvement.
+2. Visualisez votre budget : le calendrier et les graphiques montrent le total, la répartition par catégorie et les prochains prélèvements.
+3. Faites le tri : repérez les abonnements inutilisés, les doublons et les hausses de prix, puis résiliez ceux dont vous n'avez plus besoin.
+
+## Liens
+
+- [Site officiel](https://subflow.site/)
+- [SubFlow sur l'App Store](https://apps.apple.com/fr/app/subflow/id6741497228)
+- [SubFlow sur Google Play](https://play.google.com/store/apps/details?id=com.jessal.subflow)
+- [Article Numerama](https://www.numerama.com/tech/1910173-cest-quoi-subflow-cette-appli-pour-suivre-ses-abonnements-qui-est-dans-les-plus-telechargees-de-lapp-store.html)
+- [Article JustGeek](https://www.justgeek.fr/subflow-application-gestion-abonnements-136534/)
+
+## Contact
+
+subflowservice@gmail.com

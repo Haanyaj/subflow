@@ -14,7 +14,8 @@
     "nav": {
       "features": "Features",
       "faq": "FAQ",
-      "download": "Get the app"
+      "download": "Get the app",
+      "guide": "Guide"
     },
     "benefitsEyebrow": "Why SubFlow",
     "benefitsLead": "Everything you pay for every month, finally in one calm, clear place.",
@@ -22,8 +23,8 @@
     "floating": {
       "nextCharge": "Next charge",
       "nextChargeValue": "Netflix · tomorrow",
-      "saved": "Saved this year",
-      "local": "100% on-device"
+      "local": "100% on-device",
+      "saved": "Saved this year"
     },
     "cta": {
       "title": "Take back control of your subscriptions.",
@@ -37,7 +38,12 @@
     "switchToEn": "Switch website language to English",
     "previous": "Previous",
     "next": "Next",
-    "goToSlide": "Go to slide"
+    "goToSlide": "Go to slide",
+    "skipToContent": "Skip to content",
+    "mainNav": "Main navigation",
+    "carousel": "SubFlow app preview",
+    "pause": "Pause slideshow",
+    "play": "Play slideshow"
   },
   "socialProof": [
     {
@@ -90,39 +96,51 @@
     },
     {
       "question": "How does SubFlow help me save money on subscriptions?",
-      "answer": "SubFlow detects unused services, duplicates, and price increases so you can cut unnecessary spending and save up to 30% on your recurring expenses."
+      "answer": "SubFlow detects unused services, duplicates, and price increases so you can cut unnecessary recurring spending."
+    },
+    {
+      "question": "How do I know how much I spend on subscriptions each month?",
+      "answer": "Add your subscriptions to SubFlow: the app totals your recurring spending and groups it by category, so you can see exactly where your money goes every month."
+    },
+    {
+      "question": "Does SubFlow remind me before a charge?",
+      "answer": "Yes. SubFlow alerts you before each due date so you avoid surprise charges and have time to cancel a subscription you no longer need."
+    },
+    {
+      "question": "Is my data safe with SubFlow?",
+      "answer": "Your information stays stored locally on your device. No data is shared with third parties."
     }
   ],
   "slides": [
     {
       "title": "See your spending clearly",
       "description": "Get a clear overview of your subscriptions. SubFlow brings all your monthly expenses together in one place.",
-      "image": "/assets/images/screenshots/subscription-overview.png"
+      "image": "/assets/images/screenshots/subscription-overview.webp"
     },
     {
       "title": "Analyze your habits",
       "description": "Use intuitive charts to understand your spending. Spot trends and identify optimization opportunities.",
-      "image": "/assets/images/screenshots/spending-analytics.png"
+      "image": "/assets/images/screenshots/spending-analytics.webp"
     },
     {
       "title": "Track your budget",
       "description": "Keep an eye on how your spending evolves month after month. SubFlow helps you stay aligned with your financial goals.",
-      "image": "/assets/images/screenshots/monthly-budget-tracking.png"
+      "image": "/assets/images/screenshots/monthly-budget-tracking.webp"
     },
     {
       "title": "Manage your categories",
       "description": "Organize subscriptions by category for a clearer view of where your money goes.",
-      "image": "/assets/images/screenshots/subscription-categories.png"
+      "image": "/assets/images/screenshots/subscription-categories.webp"
     },
     {
       "title": "Detailed insights",
       "description": "See every subscription in detail with all the important information at a glance.",
-      "image": "/assets/images/screenshots/subscription-details.png"
+      "image": "/assets/images/screenshots/subscription-details.webp"
     },
     {
       "title": "Intuitive interface",
       "description": "An app designed to feel simple, clear, and pleasant to use every day.",
-      "image": "/assets/images/screenshots/intuitive-interface.png"
+      "image": "/assets/images/screenshots/intuitive-interface.webp"
     }
   ],
   "seo": {
@@ -142,5 +160,52 @@
     ],
     "keywords": "subscription manager, subscription tracker, monthly expense control, subscription savings, subscription app, budget tracker, recurring expenses, budget optimization",
     "featureList": "Expense visualization, Trend analysis, Due date reminders, Savings suggestions, Subscription categorization, Budget tracking, Payment alerts, Service comparison"
+  },
+  "guide": {
+    "eyebrow": "Guide",
+    "title": "What is subscription tracking?",
+    "definition": "Subscription tracking means listing every recurring expense (streaming, music, phone plan, gym, insurance, software) so you know how much each one costs per month, when it is charged, and whether you still use it. SubFlow is a free app for iPhone, iPad and Android that brings this tracking together and alerts you before every charge.",
+    "stepsTitle": "How to track your subscriptions in 3 steps",
+    "steps": [
+      {
+        "title": "List your subscriptions",
+        "description": "Add each subscription to SubFlow with its price, billing frequency and charge date. Netflix, Spotify, Disney+ or your phone plan: it takes seconds."
+      },
+      {
+        "title": "See your budget",
+        "description": "The calendar and charts show your total recurring spending, its breakdown by category, and your upcoming charges."
+      },
+      {
+        "title": "Cut what you don't use",
+        "description": "Spot unused subscriptions, duplicates and price increases, then cancel the ones you no longer need."
+      }
+    ],
+    "factsTitle": "SubFlow at a glance",
+    "facts": [
+      {
+        "label": "Price",
+        "value": "Free, optional SubFlow+"
+      },
+      {
+        "label": "Devices",
+        "value": "iPhone, iPad and Android"
+      },
+      {
+        "label": "Rating",
+        "value": "4.9/5 on the App Store (640 ratings)"
+      },
+      {
+        "label": "Downloads",
+        "value": "20,000+"
+      },
+      {
+        "label": "Data",
+        "value": "Stored locally on your device"
+      },
+      {
+        "label": "Press",
+        "value": "Numerama, JustGeek"
+      }
+    ]
   }
 }

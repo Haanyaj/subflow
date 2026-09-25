@@ -1,17 +1,26 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App.tsx'
+import './fonts.css'
 import './index.css'
-import { trackPerformance, preloadCriticalResources, enhanceAccessibility } from './utils/seoUtils'
+import { trackPerformance, enhanceAccessibility } from './utils/seoUtils'
 
 trackPerformance();
-preloadCriticalResources();
 enhanceAccessibility();
 
 document.documentElement.setAttribute('data-theme', 'light');
 
-createRoot(document.getElementById('root')!).render(
+const root = document.getElementById('root')!;
+const app = (
   <StrictMode>
     <App />
-  </StrictMode>,
-)
+  </StrictMode>
+);
+
+// In production the page is prerendered (scripts/prerender.mjs), so hydrate it;
+// in dev the root is empty and we render from scratch.
+if (root.hasChildNodes()) {
+  hydrateRoot(root, app);
+} else {
+  createRoot(root).render(app);
+}
