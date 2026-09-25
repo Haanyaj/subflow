@@ -10,7 +10,26 @@
     "faqTitle": "Frequently asked questions",
     "downloadOn": "Download on",
     "featuredIn": "Featured in",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "nav": {
+      "features": "Features",
+      "faq": "FAQ",
+      "download": "Get the app"
+    },
+    "benefitsEyebrow": "Why SubFlow",
+    "benefitsLead": "Everything you pay for every month, finally in one calm, clear place.",
+    "faqEyebrow": "Questions",
+    "floating": {
+      "nextCharge": "Next charge",
+      "nextChargeValue": "Netflix · tomorrow",
+      "saved": "Saved this year",
+      "local": "100% on-device"
+    },
+    "cta": {
+      "title": "Take back control of your subscriptions.",
+      "description": "Free on iPhone, iPad and Android. Set up in under a minute."
+    },
+    "backToTop": "Back to top"
   },
   "aria": {
     "languageSelector": "Language selector",
@@ -21,9 +40,18 @@
     "goToSlide": "Go to slide"
   },
   "socialProof": [
-    { "value": "4.9/5", "label": "App Store rating" },
-    { "value": "640", "label": "App Store reviews" },
-    { "value": "20K+", "label": "downloads" }
+    {
+      "value": "4.9/5",
+      "label": "App Store rating"
+    },
+    {
+      "value": "640",
+      "label": "App Store reviews"
+    },
+    {
+      "value": "20K+",
+      "label": "downloads"
+    }
   ],
   "benefits": [
     {

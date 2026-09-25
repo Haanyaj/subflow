@@ -10,7 +10,26 @@
     "faqTitle": "Questions fréquentes",
     "downloadOn": "Télécharger sur",
     "featuredIn": "Reconnu par",
-    "rights": "Tous droits réservés."
+    "rights": "Tous droits réservés.",
+    "nav": {
+      "features": "Fonctionnalités",
+      "faq": "FAQ",
+      "download": "Télécharger"
+    },
+    "benefitsEyebrow": "Pourquoi SubFlow",
+    "benefitsLead": "Tout ce que vous payez chaque mois, enfin réuni dans un espace clair et serein.",
+    "faqEyebrow": "Questions",
+    "floating": {
+      "nextCharge": "Prochain prélèvement",
+      "nextChargeValue": "Netflix · demain",
+      "saved": "Économisé cette année",
+      "local": "100 % sur l'appareil"
+    },
+    "cta": {
+      "title": "Reprenez le contrôle de vos abonnements.",
+      "description": "Gratuit sur iPhone, iPad et Android. Prêt en moins d'une minute."
+    },
+    "backToTop": "Haut de page"
   },
   "aria": {
     "languageSelector": "Sélecteur de langue",
@@ -21,9 +40,18 @@
     "goToSlide": "Aller au slide"
   },
   "socialProof": [
-    { "value": "4,9/5", "label": "note App Store" },
-    { "value": "640", "label": "notes App Store" },
-    { "value": "20K+", "label": "téléchargements" }
+    {
+      "value": "4,9/5",
+      "label": "note App Store"
+    },
+    {
+      "value": "640",
+      "label": "notes App Store"
+    },
+    {
+      "value": "20K+",
+      "label": "téléchargements"
+    }
   ],
   "benefits": [
     {
