@@ -271,6 +271,41 @@ button {
   to { opacity: 1; transform: none; }
 }
 
+/* Scroll reveal: items start hidden only once JS has armed the observer
+   (html.js-reveal), so the prerendered page stays readable without JavaScript. */
+.js-reveal [data-reveal] .reveal-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(0.1s + var(--i, 0) * 0.09s);
+}
+
+.js-reveal [data-reveal].is-visible .reveal-item {
+  opacity: 1;
+  transform: none;
+}
+
+/* Carousel slide + caption enter animations (replayed by remounting on key change) */
+.slide-enter {
+  animation: slide-enter 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes slide-enter {
+  from { opacity: 0; transform: translateY(24px) rotate(-1.5deg); }
+  to { opacity: 1; transform: none; }
+}
+
+.caption-enter {
+  animation: caption-enter 0.35s ease-out both;
+}
+
+@keyframes caption-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
 .float-slow {
   animation: float-y 7s ease-in-out infinite;
 }

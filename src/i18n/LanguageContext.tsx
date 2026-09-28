@@ -1,12 +1,16 @@
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react";
 import fr from "./fr.json";
-import en from "./en.json";
 
 export type Language = "fr" | "en";
 
-const translations = { fr, en } as const;
-
 type Translations = typeof fr;
+
+// English is fetched on demand so French visitors don't download it.
+let en: Translations | null = null;
+const loadEnglish = () =>
+  import("./en.json").then((module) => {
+    en = module.default as Translations;
+  });
 
 interface LanguageContextValue {
   language: Language;
@@ -29,28 +33,37 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   // then switch to the stored preference once hydrated.
   const [language, setLanguageState] = useState<Language>("fr");
 
-  useEffect(() => {
-    const stored = getStoredLanguage();
-    if (stored) setLanguageState(stored);
+  const applyLanguage = useCallback((lang: Language) => {
+    if (lang === "fr" || en) {
+      setLanguageState(lang);
+    } else {
+      loadEnglish().then(() => setLanguageState("en"));
+    }
   }, []);
 
+  // Persist only explicit choices, so a stored "en" isn't overwritten while English is still loading.
   const setLanguage = useCallback((lang: Language) => {
-    setLanguageState(lang);
-  }, []);
-
-  useEffect(() => {
     try {
-      window.localStorage.setItem("subflow-language", language);
+      window.localStorage.setItem("subflow-language", lang);
     } catch {
       // Storage unavailable (private mode); the choice just won't persist.
     }
+    applyLanguage(lang);
+  }, [applyLanguage]);
+
+  useEffect(() => {
+    const stored = getStoredLanguage();
+    if (stored) applyLanguage(stored);
+  }, [applyLanguage]);
+
+  useEffect(() => {
     document.documentElement.lang = language;
   }, [language]);
 
   const value: LanguageContextValue = {
     language,
     setLanguage,
-    t: translations[language],
+    t: language === "en" && en ? en : fr,
   };
 
   return (

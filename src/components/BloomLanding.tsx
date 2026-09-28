@@ -1,5 +1,4 @@
-import { useState, useEffect, memo, useCallback, type MouseEvent } from "react";
-import { motion, AnimatePresence, useReducedMotion, type Variants } from "framer-motion";
+import { useState, useEffect, memo, useCallback, type MouseEvent, type CSSProperties } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -28,17 +27,40 @@ const BENEFIT_GLOWS = [
   "from-rose-500/20",
 ];
 
-const EASE = [0.22, 1, 0.36, 1] as const;
+// Stagger position for a .reveal-item (see index.css)
+const order = (i: number) => ({ "--i": i }) as CSSProperties;
 
-const stagger: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
-};
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduced(query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+  return reduced;
+}
 
-const rise: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: EASE } },
-};
+// Reveals [data-reveal] sections once they scroll into view.
+function useScrollReveal() {
+  useEffect(() => {
+    if (!("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      },
+      { rootMargin: "0px 0px -80px 0px" },
+    );
+    document.querySelectorAll("[data-reveal]").forEach((el) => observer.observe(el));
+    document.documentElement.classList.add("js-reveal");
+    return () => observer.disconnect();
+  }, []);
+}
 
 function formatEuro(value: number, language: Language) {
   return new Intl.NumberFormat(language === "fr" ? "fr-FR" : "en-IE", {
@@ -94,15 +116,22 @@ const Eyebrow = ({ children }: { children: string }) => (
 );
 
 const BloomLanding = memo(() => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  // `animate` stays false for the first slide so the LCP image isn't delayed by an entrance animation
+  const [slide, setSlide] = useState({ index: 0, animate: false });
   const [isHovered, setIsHovered] = useState(false);
   const [autoplay, setAutoplay] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const { t, language, setLanguage } = useTranslation();
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = usePrefersReducedMotion();
+  useScrollReveal();
 
   const slides = t.slides;
   const ui = t.ui;
+  const currentSlide = slide.index;
+
+  const goToSlide = useCallback((next: (index: number) => number) => {
+    setSlide((prev) => ({ index: next(prev.index), animate: true }));
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -114,18 +143,18 @@ const BloomLanding = memo(() => {
   useEffect(() => {
     if (shouldReduceMotion || isHovered || !autoplay) return;
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      goToSlide((prev) => (prev + 1) % slides.length);
     }, 6000);
     return () => clearInterval(interval);
-  }, [slides.length, shouldReduceMotion, isHovered, autoplay]);
+  }, [slides.length, shouldReduceMotion, isHovered, autoplay, goToSlide]);
 
   const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  }, [slides.length]);
+    goToSlide((prev) => (prev + 1) % slides.length);
+  }, [slides.length, goToSlide]);
 
   const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  }, [slides.length]);
+    goToSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  }, [slides.length, goToSlide]);
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden text-[var(--ink)]">
@@ -180,6 +209,12 @@ const BloomLanding = memo(() => {
               aria-label={t.aria.languageSelector}
               className="glass-subtle relative flex items-center rounded-full p-1"
             >
+              <span
+                className={`absolute left-1 top-1 h-8 w-11 rounded-full bg-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  language === "en" ? "translate-x-11" : ""
+                }`}
+                aria-hidden="true"
+              />
               {(["fr", "en"] as const).map((lang) => (
                 <button
                   key={lang}
@@ -192,14 +227,6 @@ const BloomLanding = memo(() => {
                   aria-pressed={language === lang}
                   aria-label={`${lang.toUpperCase()} – ${lang === "fr" ? t.aria.switchToFr : t.aria.switchToEn}`}
                 >
-                  {language === lang && (
-                    <motion.span
-                      layoutId="lang-pill"
-                      transition={{ type: "spring", stiffness: 420, damping: 34 }}
-                      className="absolute inset-0 -z-10 rounded-full bg-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]"
-                      aria-hidden="true"
-                    />
-                  )}
                   {lang.toUpperCase()}
                 </button>
               ))}
@@ -307,22 +334,18 @@ const BloomLanding = memo(() => {
             />
 
             <div className="relative aspect-[504/824] w-full">
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.img
-                  key={currentSlide}
-                  src={slides[currentSlide].image}
-                  alt={slides[currentSlide].title}
-                  width={504}
-                  height={824}
-                  decoding="async"
-                  {...{ fetchpriority: currentSlide === 0 ? "high" : "auto" }}
-                  className="absolute inset-0 h-full w-full object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.55)]"
-                  initial={{ opacity: 0, y: 24, rotate: -1.5 }}
-                  animate={{ opacity: 1, y: 0, rotate: 0 }}
-                  exit={{ opacity: 0, y: -16, rotate: 1 }}
-                  transition={{ duration: shouldReduceMotion ? 0.1 : 0.6, ease: EASE }}
-                />
-              </AnimatePresence>
+              <img
+                key={currentSlide}
+                src={slides[currentSlide].image}
+                alt={slides[currentSlide].title}
+                width={504}
+                height={824}
+                decoding="async"
+                {...{ fetchpriority: currentSlide === 0 ? "high" : "auto" }}
+                className={`absolute inset-0 h-full w-full object-contain drop-shadow-[0_40px_50px_rgba(0,0,0,0.55)] ${
+                  slide.animate ? "slide-enter" : ""
+                }`}
+              />
             </div>
 
             {/* Floating glass chips (decorative) */}
@@ -354,20 +377,12 @@ const BloomLanding = memo(() => {
 
             {/* Slide caption + controls */}
             <div className="mt-6 min-h-[84px] text-center" aria-live={autoplay ? "off" : "polite"}>
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                  key={currentSlide}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.35 }}
-                >
-                  <p className="font-display text-lg font-semibold text-white">{slides[currentSlide].title}</p>
-                  <p className="mx-auto mt-1.5 max-w-sm text-sm leading-relaxed text-[var(--ink-soft)]">
-                    {slides[currentSlide].description}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
+              <div key={currentSlide} className={slide.animate ? "caption-enter" : ""}>
+                <p className="font-display text-lg font-semibold text-white">{slides[currentSlide].title}</p>
+                <p className="mx-auto mt-1.5 max-w-sm text-sm leading-relaxed text-[var(--ink-soft)]">
+                  {slides[currentSlide].description}
+                </p>
+              </div>
             </div>
 
             <div className="glass mx-auto mt-4 flex w-fit items-center gap-1 rounded-full p-1.5">
@@ -392,7 +407,7 @@ const BloomLanding = memo(() => {
                   <button
                     key={slide.image}
                     type="button"
-                    onClick={() => setCurrentSlide(index)}
+                    onClick={() => goToSlide(() => index)}
                     className="group flex !min-h-0 !min-w-0 h-10 w-6 items-center justify-center"
                     aria-label={`${t.aria.goToSlide} ${index + 1} : ${slide.title}`}
                     aria-current={index === currentSlide ? "true" : undefined}
@@ -420,31 +435,24 @@ const BloomLanding = memo(() => {
         </section>
 
         {/* Benefits — glass bento */}
-        <motion.section
-          id="features"
-          variants={stagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="py-16 sm:py-24"
-        >
-          <motion.div variants={rise} className="max-w-2xl">
+        <section id="features" data-reveal className="py-16 sm:py-24">
+          <div className="reveal-item max-w-2xl" style={order(0)}>
             <Eyebrow>{ui.benefitsEyebrow}</Eyebrow>
             <h2 className="font-display mt-5 text-3xl font-bold tracking-[-0.03em] text-white sm:text-5xl">
               {ui.benefitsTitle}
             </h2>
             <p className="mt-4 text-lg text-[var(--ink-soft)]">{ui.benefitsLead}</p>
-          </motion.div>
+          </div>
 
           <div className="mt-12 grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-12">
             {t.benefits.map((benefit, index) => {
               const Icon = BENEFIT_ICONS[index % BENEFIT_ICONS.length];
               return (
-                <motion.article
+                <article
                   key={benefit.title}
-                  variants={rise}
+                  style={order(index + 1)}
                   onMouseMove={trackSpotlight}
-                  className={`glass glass-spotlight group relative overflow-hidden rounded-[32px] p-7 sm:p-9 ${BENEFIT_LAYOUT[index % BENEFIT_LAYOUT.length]}`}
+                  className={`reveal-item glass glass-spotlight group relative overflow-hidden rounded-[32px] p-7 sm:p-9 ${BENEFIT_LAYOUT[index % BENEFIT_LAYOUT.length]}`}
                 >
                   <div
                     className={`pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-gradient-to-br ${BENEFIT_GLOWS[index % BENEFIT_GLOWS.length]} to-transparent blur-2xl transition-transform duration-700 group-hover:scale-125`}
@@ -462,31 +470,24 @@ const BloomLanding = memo(() => {
                     {benefit.title}
                   </h3>
                   <p className="relative mt-3 max-w-md leading-relaxed text-[var(--ink-soft)]">{benefit.description}</p>
-                </motion.article>
+                </article>
               );
             })}
           </div>
-        </motion.section>
+        </section>
 
         {/* Guide — answer-first content that search and AI engines can quote */}
-        <motion.section
-          id="guide"
-          variants={stagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="py-16 sm:py-24"
-        >
+        <section id="guide" data-reveal className="py-16 sm:py-24">
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
-            <motion.div variants={rise}>
+            <div className="reveal-item" style={order(0)}>
               <Eyebrow>{t.guide.eyebrow}</Eyebrow>
               <h2 className="font-display mt-5 text-3xl font-bold tracking-[-0.03em] text-white sm:text-5xl">
                 {t.guide.title}
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-[var(--ink-soft)] sm:text-xl">{t.guide.definition}</p>
-            </motion.div>
+            </div>
 
-            <motion.aside variants={rise} className="glass rounded-[32px] p-7 sm:p-8 lg:self-end">
+            <aside className="reveal-item glass rounded-[32px] p-7 sm:p-8 lg:self-end" style={order(1)}>
               <h3 className="font-display text-lg font-semibold text-white">{t.guide.factsTitle}</h3>
               <dl className="mt-5 divide-y divide-white/10">
                 {t.guide.facts.map((fact) => (
@@ -496,53 +497,50 @@ const BloomLanding = memo(() => {
                   </div>
                 ))}
               </dl>
-            </motion.aside>
+            </aside>
           </div>
 
-          <motion.h3 variants={rise} className="font-display mt-16 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+          <h3 className="reveal-item font-display mt-16 text-2xl font-semibold tracking-tight text-white sm:text-3xl" style={order(2)}>
             {t.guide.stepsTitle}
-          </motion.h3>
+          </h3>
           <ol className="mt-8 grid gap-4 sm:gap-5 md:grid-cols-3">
             {t.guide.steps.map((step, index) => (
-              <motion.li
+              <li
                 key={step.title}
-                variants={rise}
+                style={order(index + 3)}
                 onMouseMove={trackSpotlight}
-                className="glass glass-spotlight rounded-[28px] p-7"
+                className="reveal-item glass glass-spotlight rounded-[28px] p-7"
               >
                 <span className="font-serif-accent text-4xl leading-none text-[#6aa6ff]" aria-hidden="true">
                   {index + 1}.
                 </span>
                 <h4 className="font-display mt-6 text-lg font-semibold text-white">{step.title}</h4>
                 <p className="mt-2 leading-relaxed text-[var(--ink-soft)]">{step.description}</p>
-              </motion.li>
+              </li>
             ))}
           </ol>
-        </motion.section>
+        </section>
 
         {/* FAQ */}
-        <motion.section
+        <section
           id="faq"
-          variants={stagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
+          data-reveal
           className="grid gap-10 py-16 sm:py-24 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16"
         >
-          <motion.div variants={rise} className="lg:sticky lg:top-32 lg:self-start">
+          <div className="reveal-item lg:sticky lg:top-32 lg:self-start" style={order(0)}>
             <Eyebrow>{ui.faqEyebrow}</Eyebrow>
             <h2 className="font-display mt-5 text-3xl font-bold tracking-[-0.03em] text-white sm:text-5xl">
               {ui.faqTitle}
             </h2>
-          </motion.div>
+          </div>
 
           <div className="flex flex-col gap-3">
             {t.faqs.map((faq, index) => (
-              <motion.details
+              <details
                 key={faq.question}
-                variants={rise}
+                style={order(index + 1)}
                 open={index === 0}
-                className="faq-item glass group rounded-3xl open:bg-white/[0.07]"
+                className="reveal-item faq-item glass group rounded-3xl open:bg-white/[0.07]"
               >
                 <summary className="flex items-center gap-4 p-5 sm:p-6">
                   <span className="font-serif-accent w-8 shrink-0 text-2xl text-[#6aa6ff]" aria-hidden="true">
@@ -554,21 +552,14 @@ const BloomLanding = memo(() => {
                   </span>
                 </summary>
                 <p className="px-5 pb-6 leading-relaxed text-[var(--ink-soft)] sm:pl-[4.5rem] sm:pr-16">{faq.answer}</p>
-              </motion.details>
+              </details>
             ))}
           </div>
-        </motion.section>
+        </section>
 
         {/* Final CTA */}
-        <motion.section
-          id="download"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 1, ease: EASE }}
-          className="py-16 sm:py-24"
-        >
-          <div className="glass-strong relative overflow-hidden rounded-[44px] px-6 py-14 text-center sm:px-12 sm:py-20">
+        <section id="download" data-reveal className="py-16 sm:py-24">
+          <div className="reveal-item glass-strong relative overflow-hidden rounded-[44px] px-6 py-14 text-center sm:px-12 sm:py-20">
             <div className="pointer-events-none absolute -bottom-40 left-1/2 h-80 w-[120%] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(47,123,255,0.55),rgba(122,92,255,0.2)_45%,transparent_70%)] blur-3xl" aria-hidden="true" />
             <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent" aria-hidden="true" />
             <img
@@ -589,7 +580,7 @@ const BloomLanding = memo(() => {
               <StoreButtons label={ui.downloadOn} />
             </div>
           </div>
-        </motion.section>
+        </section>
 
         </main>
 

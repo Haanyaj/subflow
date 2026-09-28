@@ -1,9 +1,0 @@
-export { Navigation } from "./Navigation";
-export { HeroSection } from "./HeroSection";
-export { FeaturesSection } from "./FeaturesSection";
-export { StatsSection } from "./StatsSection";
-export { DownloadCTA } from "./DownloadCTA";
-export { Footer } from "./Footer";
-export { StoreButtons } from "./StoreButtons";
-export { AppScreenshot } from "./AppScreenshot";
-export { StructuredData } from "./StructuredData";

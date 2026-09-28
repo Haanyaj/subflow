@@ -6,7 +6,20 @@ export default defineConfig(({ isSsrBuild }) => ({
   resolve: {
     alias: {
       '@': '/src',
+      // Preact's React-compatible layer: same API, ~40 kB less JavaScript
+      'react-dom/client': 'preact/compat/client',
+      'react-dom/server': 'preact/compat/server',
+      'react-dom/test-utils': 'preact/test-utils',
+      'react-dom': 'preact/compat',
+      'react/jsx-runtime': 'preact/jsx-runtime',
+      'react/jsx-dev-runtime': 'preact/jsx-dev-runtime',
+      react: 'preact/compat',
     },
+  },
+  // Bundle lucide-react in the SSR build too, so it goes through the aliases above
+  // instead of loading the real React from node_modules.
+  ssr: {
+    noExternal: ['lucide-react'],
   },
   build: {
     target: 'es2020',
@@ -16,7 +29,7 @@ export default defineConfig(({ isSsrBuild }) => ({
         manualChunks: isSsrBuild
           ? undefined
           : {
-              vendor: ['react', 'react-dom'],
+              vendor: ['preact', 'preact/compat'],
             },
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: isSsrBuild ? '[name].js' : 'assets/js/[name]-[hash].js',
